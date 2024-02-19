@@ -1,0 +1,14 @@
+{
+    "required": true,
+    "minVersion": "0.8.5",
+    "package": "com.floweytf.monumentamixins.mixin.core",
+    "plugin": "com.floweytf.monumentamixins.mixin.plugins.CorePlugin",
+    "target": "@env(DEFAULT)",
+    "compatibilityLevel": "JAVA_17",
+    "server": [
+        "CraftServerMixin",
+        "MinecraftServerMixin",
+        "ServerPlayerMixin",
+        "PlayerDataStorageMixin"
+    ]
+}
