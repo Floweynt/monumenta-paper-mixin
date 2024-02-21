@@ -12,6 +12,8 @@
         "behaviour.block.IceBlockMixin",
         "behaviour.player.ServerPlayerMixin",
         "behaviour.spawner.BaseSpawnerMixin",
+        "commands.EntitySelectorOptionsMixin",
+        "commands.EntitySelectorParserMixin",
         "event.MinecraftServerMixin",
         "event.PlayerAdvancementsMixin",
         "event.PlayerDataStorageMixin",
@@ -20,7 +22,8 @@
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "commands.EntitySelectorOptionsMixin",
-        "commands.EntitySelectorParserMixin"
+        "behaviour.enchant.DigDurabilityEnchantMixin",
+        "behaviour.enchant.ItemStackMixin",
+        "behaviour.enchant.VanishingCurseEnchantmentMixin"
     ]
 }
