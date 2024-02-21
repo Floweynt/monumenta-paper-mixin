@@ -6,11 +6,15 @@
     "target": "@env(DEFAULT)",
     "compatibilityLevel": "JAVA_17",
     "server": [
+        "behaviour.player.ServerPlayerMixin",
         "event.MinecraftServerMixin",
         "event.PlayerAdvancementsMixin",
         "event.PlayerDataStorageMixin",
         "misc.branding.CraftServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "behaviour.player.ServerPlayerMixin"
+        "behaviour.block.BaseCoralPlantTypeBlockMixin",
+        "behaviour.block.ConcretePowderBlockMixin",
+        "behaviour.block.CoralBlockMixin",
+        "behaviour.block.IceBlockMixin"
     ]
 }
