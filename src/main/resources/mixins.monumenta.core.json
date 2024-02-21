@@ -10,6 +10,9 @@
         "behaviour.block.ConcretePowderBlockMixin",
         "behaviour.block.CoralBlockMixin",
         "behaviour.block.IceBlockMixin",
+        "behaviour.enchant.DigDurabilityEnchantMixin",
+        "behaviour.enchant.ItemStackMixin",
+        "behaviour.enchant.VanishingCurseEnchantmentMixin",
         "behaviour.player.ServerPlayerMixin",
         "behaviour.spawner.BaseSpawnerMixin",
         "commands.EntitySelectorOptionsMixin",
@@ -22,8 +25,20 @@
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "behaviour.enchant.DigDurabilityEnchantMixin",
-        "behaviour.enchant.ItemStackMixin",
-        "behaviour.enchant.VanishingCurseEnchantmentMixin"
+        "behaviour.entity.AnimalMixin",
+        "behaviour.entity.BeeMixin",
+        "behaviour.entity.CreeperMixin",
+        "behaviour.entity.ElderGuardianMixin",
+        "behaviour.entity.EnderManMixin",
+        "behaviour.entity.GiantMixin",
+        "behaviour.entity.IronGolemMixin",
+        "behaviour.entity.LivingEntityMixin",
+        "behaviour.entity.ProjectileUtilMixin",
+        "behaviour.entity.ShulkerMixin",
+        "behaviour.entity.TrackingRangeMixin",
+        "behaviour.entity.VillagerGoalPackagesMixin",
+        "behaviour.entity.VillagerMixin",
+        "behaviour.entity.WitherBossMixin",
+        "behaviour.entity.ZombieMixin"
     ]
 }
