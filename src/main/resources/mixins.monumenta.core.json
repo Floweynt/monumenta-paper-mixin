@@ -44,9 +44,8 @@
         "misc.ServerGamePacketListenerImplMixin",
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
-        "misc.branding.MinecraftServerMixin"
-    ],
-    "mixins": [
+        "misc.branding.MinecraftServerMixin",
+        "behaviour.entity.MobMixin",
         "behaviour.entity.WanderingTraderMixin"
     ]
 }
