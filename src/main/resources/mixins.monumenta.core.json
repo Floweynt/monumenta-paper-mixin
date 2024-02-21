@@ -45,5 +45,8 @@
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
         "misc.branding.MinecraftServerMixin"
+    ],
+    "mixins": [
+        "behaviour.entity.WanderingTraderMixin"
     ]
 }
