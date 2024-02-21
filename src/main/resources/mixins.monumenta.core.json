@@ -30,6 +30,8 @@
         "behaviour.entity.ZombieMixin",
         "behaviour.player.ServerPlayerMixin",
         "behaviour.spawner.BaseSpawnerMixin",
+        "bugfix.ReloadableServerResourcesMixin",
+        "bugfix.ServerFunctionLibraryMixin",
         "commands.EntitySelectorOptionsMixin",
         "commands.EntitySelectorParserMixin",
         "event.MinecraftServerMixin",
@@ -40,7 +42,6 @@
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "bugfix.ReloadableServerResourcesMixin",
-        "bugfix.ServerFunctionLibraryMixin"
+        "misc.InventoryMixin"
     ]
 }
