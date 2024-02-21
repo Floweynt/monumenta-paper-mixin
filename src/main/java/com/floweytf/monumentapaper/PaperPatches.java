@@ -1,4 +1,4 @@
-package com.floweytf.monumentamixins.mixin;
+package com.floweytf.monumentapaper;
 
 import java.io.PrintStream;
 

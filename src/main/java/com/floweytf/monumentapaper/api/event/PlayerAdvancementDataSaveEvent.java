@@ -1,4 +1,4 @@
-package com.floweytf.monumentamixins.mixin.api.event;
+package com.floweytf.monumentapaper.api.event;
 
 import java.io.File;
 
@@ -9,24 +9,24 @@ import org.bukkit.event.player.PlayerEvent;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Called when the server saves the primary .dat data for a player
+ * Called when the server saves the advancement data for a player
  */
-public class PlayerDataSaveEvent extends PlayerEvent implements Cancellable {
+public class PlayerAdvancementDataSaveEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    @NotNull private final Object data;
+    @NotNull private String jsonData;
     @NotNull private File path;
     private boolean cancel = false;
 
-    public PlayerDataSaveEvent(@NotNull Player who, @NotNull File path, @NotNull Object data) {
+    public PlayerAdvancementDataSaveEvent(@NotNull Player who, @NotNull File path, @NotNull String jsonData) {
         super(who);
-        this.data = data;
+        this.jsonData = jsonData;
         this.path = path;
     }
 
     /**
-     * Get the file path where player data will be saved to.
+     * Get the file path where advancement data will be saved to.
      *
-     * @return player data File to save to
+     * @return advancement data File to save to
      */
     @NotNull
     public File getPath() {
@@ -34,20 +34,29 @@ public class PlayerDataSaveEvent extends PlayerEvent implements Cancellable {
     }
 
     /**
-     * Set the file path where player data will be saved to.
+     * Set the file path where advancement data will be saved to.
      */
     public void setPath(@NotNull File path) {
         this.path = path;
     }
 
     /**
-     * Get the NBTTagCompound player data that will be saved.
+     * Get the JSON advancements data that will be saved.
      *
-     * @return NBTTagCompound player data
+     * @return JSON data of the player's advancements
      */
     @NotNull
-    public Object getData() {
-        return data;
+    public String getJsonData() {
+        return jsonData;
+    }
+
+    /**
+     * Set the JSON advancements data that will be saved.
+     *
+     * @param jsonData advancement data JSON string to save instead
+     */
+    public void setJsonData(@NotNull String jsonData) {
+        this.jsonData = jsonData;
     }
 
     public boolean isCancelled() {

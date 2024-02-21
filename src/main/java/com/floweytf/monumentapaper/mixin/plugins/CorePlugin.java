@@ -1,4 +1,4 @@
-package com.floweytf.monumentamixins.mixin.plugins;
+package com.floweytf.monumentapaper.mixin.plugins;
 
 import java.util.List;
 import java.util.Set;
@@ -9,7 +9,7 @@ import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-import com.floweytf.monumentamixins.mixin.PaperPatches;
+import com.floweytf.monumentapaper.PaperPatches;
 
 public final class CorePlugin implements IMixinConfigPlugin {
     @Override

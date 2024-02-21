@@ -1,14 +1,12 @@
 {
     "required": true,
     "minVersion": "0.8.5",
-    "package": "com.floweytf.monumentamixins.mixin.core",
-    "plugin": "com.floweytf.monumentamixins.mixin.plugins.CorePlugin",
+    "package": "com.floweytf.monumentapaper.mixin.core",
+    "plugin": "com.floweytf.monumentapaper.mixin.plugins.CorePlugin",
     "target": "@env(DEFAULT)",
     "compatibilityLevel": "JAVA_17",
     "server": [
-        "CraftServerMixin",
-        "MinecraftServerMixin",
-        "ServerPlayerMixin",
-        "PlayerDataStorageMixin"
+        "misc.branding.CraftServerMixin",
+        "misc.branding.MinecraftServerMixin"
     ]
 }
