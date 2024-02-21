@@ -38,10 +38,11 @@
         "event.PlayerAdvancementsMixin",
         "event.PlayerDataStorageMixin",
         "misc.DimensionDataStorageMixin",
+        "misc.InventoryMixin",
         "misc.ServerGamePacketListenerImplMixin",
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "misc.InventoryMixin"
+        "bugfix.CraftLootTableMixin"
     ]
 }
