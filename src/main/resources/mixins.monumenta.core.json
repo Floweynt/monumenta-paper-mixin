@@ -15,10 +15,12 @@
         "event.MinecraftServerMixin",
         "event.PlayerAdvancementsMixin",
         "event.PlayerDataStorageMixin",
-        "misc.branding.CraftServerMixin",
-        "misc.branding.MinecraftServerMixin",
         "misc.DimensionDataStorageMixin",
         "misc.ServerGamePacketListenerImplMixin",
-        "misc.ServerShutdownThreadMixin"
+        "misc.ServerShutdownThreadMixin",
+        "misc.branding.CraftServerMixin",
+        "misc.branding.MinecraftServerMixin",
+        "commands.EntitySelectorOptionsMixin",
+        "commands.EntitySelectorParserMixin"
     ]
 }
