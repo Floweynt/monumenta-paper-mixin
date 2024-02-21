@@ -13,6 +13,7 @@
         "behaviour.enchant.DigDurabilityEnchantMixin",
         "behaviour.enchant.ItemStackMixin",
         "behaviour.enchant.VanishingCurseEnchantmentMixin",
+        "behaviour.entity.AbstractArrowMixin",
         "behaviour.entity.AnimalMixin",
         "behaviour.entity.BeeMixin",
         "behaviour.entity.CreeperMixin",
@@ -30,6 +31,7 @@
         "behaviour.entity.ZombieMixin",
         "behaviour.player.ServerPlayerMixin",
         "behaviour.spawner.BaseSpawnerMixin",
+        "bugfix.CraftLootTableMixin",
         "bugfix.ReloadableServerResourcesMixin",
         "bugfix.ServerFunctionLibraryMixin",
         "commands.EntitySelectorOptionsMixin",
@@ -42,7 +44,6 @@
         "misc.ServerGamePacketListenerImplMixin",
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
-        "misc.branding.MinecraftServerMixin",
-        "bugfix.CraftLootTableMixin"
+        "misc.branding.MinecraftServerMixin"
     ]
 }
