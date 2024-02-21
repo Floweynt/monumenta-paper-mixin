@@ -11,11 +11,14 @@
         "behaviour.block.CoralBlockMixin",
         "behaviour.block.IceBlockMixin",
         "behaviour.player.ServerPlayerMixin",
+        "behaviour.spawner.BaseSpawnerMixin",
         "event.MinecraftServerMixin",
         "event.PlayerAdvancementsMixin",
         "event.PlayerDataStorageMixin",
         "misc.branding.CraftServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "behaviour.spawner.BaseSpawnerMixin"
+        "misc.DimensionDataStorageMixin",
+        "misc.ServerGamePacketListenerImplMixin",
+        "misc.ServerShutdownThreadMixin"
     ]
 }
