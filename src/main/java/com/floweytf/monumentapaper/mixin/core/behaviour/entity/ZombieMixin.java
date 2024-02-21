@@ -23,6 +23,4 @@ public class ZombieMixin {
     private void disableConversion(Zombie instance, int ticksUntilWaterConversion) {
         // no-op
     }
-
-
 }
