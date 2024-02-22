@@ -40,7 +40,7 @@ public class MinecraftServerMixin {
             ordinal = 0
         )
     )
-    void run(CallbackInfo ci) {
+    void savePlayers(CallbackInfo ci) {
         this.isSaving = true;
         if (this.playerList != null) {
             LOGGER.info("Saving players");

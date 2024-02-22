@@ -50,7 +50,7 @@ public abstract class EnderManMixin extends Monster {
         method = "hurt",
         at = @At("TAIL")
     )
-    private boolean func(
+    private boolean modifyHurtReturnValue(
         boolean original, DamageSource source, float amount,
         @Share("hasEscaped") LocalBooleanRef ref
     ) {

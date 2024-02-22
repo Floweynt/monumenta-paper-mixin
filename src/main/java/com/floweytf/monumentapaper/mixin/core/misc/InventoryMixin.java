@@ -26,7 +26,7 @@ public class InventoryMixin {
     @Shadow @Final public Player player;
 
     @ModifyReturnValue(method = "clearOrCountMatchingItems", at = @At("TAIL"))
-    private int func(int original, Predicate<ItemStack> shouldRemove, int maxCount, Container craftingInventory) {
+    private int clearCraftingSlots(int original, Predicate<ItemStack> shouldRemove, int maxCount, Container craftingInventory) {
         CraftingContainer container = null;
 
         if (this.player.containerMenu instanceof InventoryMenu)

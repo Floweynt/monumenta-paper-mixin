@@ -54,13 +54,13 @@ public class GiantMixin extends Monster {
     }
 
     @Unique
-    protected SoundEvent monumenta_mixins$getStepSound() {
+    protected SoundEvent monumenta$getStepSound() {
         return SoundEvents.ZOMBIE_STEP;
     }
 
     @Override
     protected void playStepSound(@NotNull BlockPos pos, @NotNull BlockState state) {
-        this.playSound(this.monumenta_mixins$getStepSound(), 0.15F, 0.3F);
+        this.playSound(this.monumenta$getStepSound(), 0.15F, 0.3F);
     }
 
     @Override

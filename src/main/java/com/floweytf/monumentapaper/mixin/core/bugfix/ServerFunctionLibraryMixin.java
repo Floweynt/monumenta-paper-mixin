@@ -1,13 +1,11 @@
 package com.floweytf.monumentapaper.mixin.core.bugfix;
 
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.resources.FileToIdConverter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.ServerFunctionLibrary;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
-import org.checkerframework.checker.units.qual.K;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -26,7 +24,7 @@ import java.util.Map;
 @Mixin(ServerFunctionLibrary.class)
 public class ServerFunctionLibraryMixin {
     @Unique
-    private static boolean monumenta_mixins$initialFunctionLoad = true;
+    private static boolean monumenta$isInitialFunctionLoad = true;
 
     @Redirect(
         method = "lambda$reload$1",
@@ -36,8 +34,7 @@ public class ServerFunctionLibraryMixin {
         )
     )
     private static Map<ResourceLocation, Resource> disableFunctionOnFirstLoad(FileToIdConverter instance, ResourceManager resourceManager) {
-        if (monumenta_mixins$initialFunctionLoad) {
-            // lol what
+        if (monumenta$isInitialFunctionLoad) {
             return new FileToIdConverter("functions", ".nope.nope.nope.nope.Monumenta.nope")
                 .listMatchingResources(resourceManager);
         } else {
@@ -53,6 +50,6 @@ public class ServerFunctionLibraryMixin {
         )
     )
     private void onReload(Pair<?, ?> intermediate, CallbackInfo ci) {
-        monumenta_mixins$initialFunctionLoad = false;
+        monumenta$isInitialFunctionLoad = false;
     }
 }

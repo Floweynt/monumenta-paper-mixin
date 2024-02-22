@@ -14,7 +14,10 @@ import org.spongepowered.asm.mixin.injection.*;
  */
 @Mixin(CraftServer.class)
 public class CraftServerMixin {
-    @ModifyConstant(method = "<init>", constant = @Constant(stringValue = "Paper"))
+    @ModifyConstant(
+        method = "<init>",
+        constant = @Constant(stringValue = "Paper")
+    )
     private String modifyServerName(String string) {
         return PaperPatches.IDENTIFIER + string;
     }

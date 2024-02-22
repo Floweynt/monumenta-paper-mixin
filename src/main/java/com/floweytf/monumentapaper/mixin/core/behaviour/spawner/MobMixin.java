@@ -24,7 +24,7 @@ public abstract class MobMixin extends LivingEntity {
     }
 
     @Unique
-    private boolean monumenta_mixins$isDespawnCandidate() {
+    private boolean monumenta$isDespawnCandidate() {
         var spawner = ((EntityAccessor) this).getSpawner();
 
         return spawner != null &&
@@ -34,8 +34,8 @@ public abstract class MobMixin extends LivingEntity {
     }
 
     @Unique
-    public void monumenta_mixins$despawn() {
-        if (monumenta_mixins$isDespawnCandidate()) {
+    public void monumenta$despawn() {
+        if (monumenta$isDespawnCandidate()) {
             // Get the closest player to spawner
             var spawner = ((EntityAccessor) this).getSpawner();
             var delveReprime = ((EntityAccessor) this).getDelveReprime();
@@ -76,7 +76,7 @@ public abstract class MobMixin extends LivingEntity {
             target = "Lnet/minecraft/world/entity/Mob;discard()V"
         )
     )
-    private void func(Mob instance) {
-        monumenta_mixins$despawn();
+    private void replaceDiscardDespawn(Mob instance) {
+        monumenta$despawn();
     }
 }

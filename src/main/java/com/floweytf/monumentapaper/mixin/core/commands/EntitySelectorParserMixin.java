@@ -25,8 +25,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(EntitySelectorParser.class)
 public class EntitySelectorParserMixin implements EntitySelectorParserAccessor {
     @Shadow private boolean worldLimited;
+
     @Unique
-    private boolean monumenta_mixins$worldLimitedSet = false;
+    private boolean monumenta$worldLimitedSet = false;
 
     // TODO: validate this guy
     @ModifyConstant(
@@ -60,12 +61,12 @@ public class EntitySelectorParserMixin implements EntitySelectorParserAccessor {
 
     @Override
     public boolean getWorldLimitedSet() {
-        return monumenta_mixins$worldLimitedSet;
+        return monumenta$worldLimitedSet;
     }
 
     @Override
     public void setWorldLimitedSet(boolean b) {
-        monumenta_mixins$worldLimitedSet = b;
+        monumenta$worldLimitedSet = b;
     }
 
     /**

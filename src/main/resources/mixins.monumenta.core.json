@@ -46,13 +46,10 @@
         "misc.ServerGamePacketListenerImplMixin",
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
-        "misc.branding.MinecraftServerMixin"
-    ],
-    "mixins": [
+        "misc.branding.MinecraftServerMixin",
         "behaviour.spawner.EntityMixin",
         "behaviour.spawner.MobMixin",
         "behaviour.spawner.ServerPlayerMixin",
-        "behaviour.spawner.SeverPlayerMixin",
         "behaviour.spawner.SpawnerBlockEntityMixin"
     ]
 }

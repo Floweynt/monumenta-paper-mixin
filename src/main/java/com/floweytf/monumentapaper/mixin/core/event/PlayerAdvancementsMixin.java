@@ -44,8 +44,9 @@ public class PlayerAdvancementsMixin {
     private Path playerSavePath;
 
     @Shadow @Final private static Gson GSON;
+
     @Unique
-    private File monumenta_mixins$actualPlayerSavePath;
+    private ThreadLocal<File> monumenta$actualPlayerSavePath = new ThreadLocal<>();
 
     // Remove pretty printing for some reason
     // Basically, we redirect a call to setPrettyPrinting to a noop
@@ -73,7 +74,19 @@ public class PlayerAdvancementsMixin {
         var event = new PlayerAdvancementDataLoadEvent(this.player.getBukkitEntity(), this.playerSavePath.toFile());
         eventRef.set(event);
         event.callEvent();
-        monumenta_mixins$actualPlayerSavePath = event.getPath();
+        monumenta$actualPlayerSavePath.set(event.getPath());
+    }
+
+    @ModifyArg(
+        method = "lambda$applyFrom$0",
+        at = @At(
+            value = "INVOKE",
+            target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V"
+        ),
+        index = 2
+    )
+    private Object logActualSavePath(Object arg1) {
+        return monumenta$actualPlayerSavePath.get();
     }
 
     // Allow loading even if file doesn't exist as long as event supplies json
@@ -132,7 +145,7 @@ public class PlayerAdvancementsMixin {
     // I'd like to avoid doing this in the future
     @ModifyArg(method = "lambda$applyFrom$0", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V"), require = 1, index = 2)
     private Object modifyLoadLoggedPath(Object arg) {
-        return monumenta_mixins$actualPlayerSavePath;
+        return monumenta$actualPlayerSavePath;
     }
 
     // Save event implementation

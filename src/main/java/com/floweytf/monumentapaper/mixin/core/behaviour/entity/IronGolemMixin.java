@@ -25,7 +25,7 @@ public abstract class IronGolemMixin {
         ),
         index = 1
     )
-    private float modifyArg(float amount) {
+    private float modifyAttackDamage(float amount) {
         return getAttackDamage();
     }
 }

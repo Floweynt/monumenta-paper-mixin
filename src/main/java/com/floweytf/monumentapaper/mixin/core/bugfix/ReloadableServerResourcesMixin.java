@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(ReloadableServerResources.class)
 public class ReloadableServerResourcesMixin {
     @Unique
-    private static Commands monumenta_mixins$commandsInstance = null;
+    private static Commands monumenta$commandsInstance = null;
 
     @WrapOperation(
         method = "<init>",
@@ -28,10 +28,10 @@ public class ReloadableServerResourcesMixin {
         )
     )
     private Commands cacheCommandInstance(Commands.CommandSelection commandSelection, CommandBuildContext environment, Operation<Commands> original) {
-        if(monumenta_mixins$commandsInstance == null) {
-            monumenta_mixins$commandsInstance = original.call(commandSelection, environment);
+        if(monumenta$commandsInstance == null) {
+            monumenta$commandsInstance = original.call(commandSelection, environment);
         }
 
-        return monumenta_mixins$commandsInstance;
+        return monumenta$commandsInstance;
     }
 }

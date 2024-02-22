@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.Slice;
 @Mixin(BaseSpawner.class)
 public class BaseSpawnerMixin implements SpawnerAccessor {
     @Unique
-    private BlockPos monumenta_mixins$blockPos = null;
+    private BlockPos monumenta$blockPos = null;
 
     @ModifyExpressionValue(
         method = "serverTick",
@@ -91,11 +91,11 @@ public class BaseSpawnerMixin implements SpawnerAccessor {
 
     @Override
     public BlockPos getBlockPos() {
-        return monumenta_mixins$blockPos;
+        return monumenta$blockPos;
     }
 
     @Override
     public void setBlockPos(BlockPos pos) {
-        monumenta_mixins$blockPos = pos;
+        monumenta$blockPos = pos;
     }
 }

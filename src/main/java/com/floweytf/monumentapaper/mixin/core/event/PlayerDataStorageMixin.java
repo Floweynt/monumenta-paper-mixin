@@ -43,6 +43,7 @@ public class PlayerDataStorageMixin {
     private File playerDir;
 
     // really cursed save inject
+    // TODO: break apart this inject or just use overwrite
     @Inject(
         method = "save",
         at = @At(
