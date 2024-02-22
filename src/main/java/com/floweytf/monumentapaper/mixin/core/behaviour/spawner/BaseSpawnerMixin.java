@@ -1,6 +1,7 @@
 package com.floweytf.monumentapaper.mixin.core.behaviour.spawner;
 
 import com.destroystokyo.paper.event.entity.PreSpawnerSpawnEvent;
+import com.floweytf.monumentapaper.accessor.SpawnerAccessor;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
@@ -8,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.BaseSpawner;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
@@ -16,11 +18,15 @@ import org.spongepowered.asm.mixin.injection.Slice;
 /**
  * @author Flowey
  * @mm-patch 0007-Monumenta-Standardize-spawner-behaviour-for-all-enti.patch
+ * @mm-patch 0025-Monumenta-Mobs-that-despawn-return-to-their-spawners.patch
  *
  * Remove spawner checks
  */
 @Mixin(BaseSpawner.class)
-public class BaseSpawnerMixin {
+public class BaseSpawnerMixin implements SpawnerAccessor {
+    @Unique
+    private BlockPos monumenta_mixins$blockPos = null;
+
     @ModifyExpressionValue(
         method = "serverTick",
         at = @At(
@@ -81,5 +87,15 @@ public class BaseSpawnerMixin {
         @Local Mob mob
     ) {
         return world.isUnobstructed(mob);
+    }
+
+    @Override
+    public BlockPos getBlockPos() {
+        return monumenta_mixins$blockPos;
+    }
+
+    @Override
+    public void setBlockPos(BlockPos pos) {
+        monumenta_mixins$blockPos = pos;
     }
 }

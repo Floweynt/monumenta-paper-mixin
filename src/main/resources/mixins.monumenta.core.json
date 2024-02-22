@@ -22,11 +22,13 @@
         "behaviour.entity.GiantMixin",
         "behaviour.entity.IronGolemMixin",
         "behaviour.entity.LivingEntityMixin",
+        "behaviour.entity.MobMixin",
         "behaviour.entity.ProjectileUtilMixin",
         "behaviour.entity.ShulkerMixin",
         "behaviour.entity.TrackingRangeMixin",
         "behaviour.entity.VillagerGoalPackagesMixin",
         "behaviour.entity.VillagerMixin",
+        "behaviour.entity.WanderingTraderMixin",
         "behaviour.entity.WitherBossMixin",
         "behaviour.entity.ZombieMixin",
         "behaviour.player.ServerPlayerMixin",
@@ -44,8 +46,13 @@
         "misc.ServerGamePacketListenerImplMixin",
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
-        "misc.branding.MinecraftServerMixin",
-        "behaviour.entity.MobMixin",
-        "behaviour.entity.WanderingTraderMixin"
+        "misc.branding.MinecraftServerMixin"
+    ],
+    "mixins": [
+        "behaviour.spawner.EntityMixin",
+        "behaviour.spawner.MobMixin",
+        "behaviour.spawner.ServerPlayerMixin",
+        "behaviour.spawner.SeverPlayerMixin",
+        "behaviour.spawner.SpawnerBlockEntityMixin"
     ]
 }

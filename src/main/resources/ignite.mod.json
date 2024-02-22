@@ -1,7 +1,7 @@
 {
-  "id": "monumenta",
-  "version": "1.0.0",
-  "mixins": [
-    "mixins.monumenta.core.json"
-  ]
+    "id": "monumenta",
+    "version": "1.0.0",
+    "mixins": [
+        "mixins.monumenta.core.json"
+    ]
 }

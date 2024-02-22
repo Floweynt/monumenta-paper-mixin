@@ -1,11 +1,11 @@
 plugins {
-  id("mod.base-conventions")
+    id("mod.base-conventions")
 }
 
 dependencies {
-  compileOnly(libs.ignite)
-  compileOnly(libs.mixin)
-  compileOnly(libs.mixinExtras)
+    compileOnly(libs.ignite)
+    compileOnly(libs.mixin)
+    compileOnly(libs.mixinExtras)
 
-  paperweight.paperDevBundle(libs.versions.paper)
+    paperweight.paperDevBundle(libs.versions.paper)
 }
