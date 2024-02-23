@@ -42,6 +42,7 @@ public abstract class EnderManMixin extends Monster {
         boolean original,
         @Share("hasEscaped") LocalBooleanRef ref
     ) {
+        System.out.println(original);
         ref.set(original);
         return original;
     }
@@ -54,9 +55,10 @@ public abstract class EnderManMixin extends Monster {
         boolean original, DamageSource source, float amount,
         @Share("hasEscaped") LocalBooleanRef ref
     ) {
+        System.out.println(ref.get());
         if (ref.get())
             return original;
-        return original || super.hurt(source, amount) || this.tryEscape(EndermanEscapeEvent.Reason.INDIRECT);
+        return original || super.hurt(source, amount);
     }
 
     /**
