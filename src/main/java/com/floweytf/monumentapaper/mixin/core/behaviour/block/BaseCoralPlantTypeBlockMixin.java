@@ -25,7 +25,7 @@ public class BaseCoralPlantTypeBlockMixin {
         at = @At("HEAD"),
         cancellable = true
     )
-    private static void disableCoralDeath(BlockState state, BlockGetter world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+    private static void monumenta$disableCoralDeath(BlockState state, BlockGetter world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
         cir.cancel();
     }

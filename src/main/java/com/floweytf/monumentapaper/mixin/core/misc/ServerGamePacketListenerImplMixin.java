@@ -19,7 +19,7 @@ public class ServerGamePacketListenerImplMixin {
         method = "tick",
         constant = @Constant(intValue = 80)
     )
-    private int changeFlyingTickTime(int constant) {
+    private int monumenta$changeFlyingTickTime(int constant) {
         return MiscConfiguration.getFlyingTickTime();
     }
 }

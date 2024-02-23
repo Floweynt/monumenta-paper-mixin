@@ -23,7 +23,7 @@ public class ItemStackMixin {
         argsOnly = true,
         index = 1
     )
-    private int curveAmount(int amount) {
+    private int monumenta$curveAmount(int amount) {
         return (int)Math.min(amount, Math.sqrt(amount * 4));
     }
 }

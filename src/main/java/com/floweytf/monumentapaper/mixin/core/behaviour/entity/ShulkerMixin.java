@@ -29,7 +29,7 @@ public abstract class ShulkerMixin extends AbstractGolem {
         at = @At("HEAD"),
         cancellable = true
     )
-    private void cancelSetPeekAmountIfNoAI(int peekAmount, CallbackInfo ci) {
+    private void monumenta$cancelSetPeekAmountIfNoAI(int peekAmount, CallbackInfo ci) {
         if(isNoAi()) {
             ci.cancel();
         }
@@ -42,7 +42,7 @@ public abstract class ShulkerMixin extends AbstractGolem {
             target = "Lnet/minecraft/world/entity/monster/Shulker;isClosed()Z"
         )
     )
-    private boolean allowArrowsOnClosed(boolean original) {
+    private boolean monumenta$allowArrowsOnClosed(boolean original) {
         return false;
     }
 }

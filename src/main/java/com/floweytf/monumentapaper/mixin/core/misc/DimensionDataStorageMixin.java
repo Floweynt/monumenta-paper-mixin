@@ -26,7 +26,7 @@ public class DimensionDataStorageMixin {
             shift = At.Shift.AFTER
         )
     )
-    private <T> void forceExitOnError(Function<CompoundTag, T> readFunction, DataFixTypes dataFixTypes, String id, CallbackInfoReturnable<T> cir) {
+    private <T> void monumenta$forceExitOnError(Function<CompoundTag, T> readFunction, DataFixTypes dataFixTypes, String id, CallbackInfoReturnable<T> cir) {
         // TODO: lol linux error codes are int8_t
         System.exit(-9001);
     }

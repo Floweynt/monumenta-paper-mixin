@@ -76,7 +76,7 @@ public abstract class MobMixin extends LivingEntity {
             target = "Lnet/minecraft/world/entity/Mob;discard()V"
         )
     )
-    private void replaceDiscardDespawn(Mob instance) {
+    private void monumenta$replaceDiscardDespawn(Mob instance) {
         monumenta$despawn();
     }
 }

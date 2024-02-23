@@ -34,7 +34,7 @@ public class BaseSpawnerMixin implements SpawnerAccessor {
             target = "Lnet/minecraft/world/entity/SpawnPlacements;checkSpawnRules(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)Z"
         )
     )
-    private boolean disableMobSpawnCheck(boolean original, ServerLevel world, BlockPos pos) {
+    private boolean monumenta$disableMobSpawnCheck(boolean original, ServerLevel world, BlockPos pos) {
         // Since logic is inverted, we need to use !=
         // Also we should check for difficulty
         // TODO: there is probably a clever way of doing this without getting cancer
@@ -58,7 +58,7 @@ public class BaseSpawnerMixin implements SpawnerAccessor {
             )
         )
     )
-    private int setFlagIfCancelled(
+    private int monumenta$setFlagIfCancelled(
         int constant,
         @Local PreSpawnerSpawnEvent ev
     ) {
@@ -69,9 +69,10 @@ public class BaseSpawnerMixin implements SpawnerAccessor {
         method = "serverTick",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/Mob;checkSpawnObstruction(Lnet/minecraft/world/level/LevelReader;)Z")
+            target = "Lnet/minecraft/world/entity/Mob;checkSpawnObstruction(Lnet/minecraft/world/level/LevelReader;)Z"
+        )
     )
-    private boolean removeOrRightHandSide(boolean original) {
+    private boolean monumenta$removeOrRightHandSide(boolean original) {
         return true;
     }
 
@@ -79,9 +80,10 @@ public class BaseSpawnerMixin implements SpawnerAccessor {
         method = "serverTick",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/Mob;checkSpawnRules(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/entity/MobSpawnType;)Z")
+            target = "Lnet/minecraft/world/entity/Mob;checkSpawnRules(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/entity/MobSpawnType;)Z"
+        )
     )
-    private boolean moveMobObstructionCheck(
+    private boolean monumenta$moveMobObstructionCheck(
         boolean original,
         ServerLevel world, BlockPos pos,
         @Local Mob mob

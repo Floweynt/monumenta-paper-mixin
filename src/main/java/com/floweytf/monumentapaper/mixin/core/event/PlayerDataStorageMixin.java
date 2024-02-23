@@ -1,5 +1,6 @@
 package com.floweytf.monumentapaper.mixin.core.event;
 
+import com.floweytf.monumentapaper.PaperPatches;
 import com.floweytf.monumentapaper.api.event.PlayerDataLoadEvent;
 import com.floweytf.monumentapaper.api.event.PlayerDataSaveEvent;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -28,16 +29,6 @@ import java.nio.file.Files;
  */
 @Mixin(PlayerDataStorage.class)
 public class PlayerDataStorageMixin {
-    // we create this dummy file object that never exists
-    // this tricks MC into not reading from file
-    @Unique
-    private static final File FAKE_FILE = new File("") {
-        @Override
-        public boolean exists() {
-            return false;
-        }
-    };
-
     @Shadow
     @Final
     private File playerDir;
@@ -52,7 +43,7 @@ public class PlayerDataStorageMixin {
         ),
         cancellable = true
     )
-    private void emitSaveEvent(Player player, CallbackInfo ci, @Local(ordinal = 0) CompoundTag tag) {
+    private void monumenta$emitSaveEvent(Player player, CallbackInfo ci, @Local(ordinal = 0) CompoundTag tag) {
         // always cancel the event since we overwrite logic
         ci.cancel();
 
@@ -89,13 +80,13 @@ public class PlayerDataStorageMixin {
             )
         )
     )
-    private File emitLoadEvent(File file, Player player, @Local LocalRef<CompoundTag> tag) {
+    private File monumenta$emitLoadEvent(File file, Player player, @Local LocalRef<CompoundTag> tag) {
         PlayerDataLoadEvent event = new PlayerDataLoadEvent((CraftPlayer)(player.getBukkitEntity()), file);
         event.callEvent();
 
         if (event.getData() != null) {
             tag.set((CompoundTag) event.getData());
-            return FAKE_FILE;
+            return PaperPatches.FAKE_FILE;
         }
 
         return event.getPath();

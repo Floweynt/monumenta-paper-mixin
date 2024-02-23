@@ -40,7 +40,7 @@ public abstract class LivingEntityMixin extends Entity {
             target = "Lnet/minecraft/world/damagesource/DamageSource;getEntity()Lnet/minecraft/world/entity/Entity;"
         )
     )
-    private void resetHurtTime(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+    private void monumenta$resetHurtTime(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (lastHurtByPlayer != null) {
             lastHurtByPlayerTime = 100;
         }

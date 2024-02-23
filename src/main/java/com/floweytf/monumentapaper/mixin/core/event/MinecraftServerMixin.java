@@ -40,7 +40,7 @@ public class MinecraftServerMixin {
             ordinal = 0
         )
     )
-    void savePlayers(CallbackInfo ci) {
+    void monumenta$savePlayers(CallbackInfo ci) {
         this.isSaving = true;
         if (this.playerList != null) {
             LOGGER.info("Saving players");
@@ -65,7 +65,7 @@ public class MinecraftServerMixin {
             ordinal = 0
         )
     )
-    private PlayerList skipSecondSave(PlayerList original) {
+    private PlayerList monumenta$skipSecondSave(PlayerList original) {
         return null;
     }
 }

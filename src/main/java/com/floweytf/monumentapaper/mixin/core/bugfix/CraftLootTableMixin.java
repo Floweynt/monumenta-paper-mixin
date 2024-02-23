@@ -31,7 +31,7 @@ public class CraftLootTableMixin {
             ordinal = 0
         )
     )
-    private void addWithLuck(LootContext context, Random random, CallbackInfoReturnable<LootParams> cir, @Local LootParams.Builder builder) {
+    private void monumenta$addWithLuck(LootContext context, Random random, CallbackInfoReturnable<LootParams> cir, @Local LootParams.Builder builder) {
         builder.withLuck(context.getLuck());
     }
 
@@ -42,7 +42,7 @@ public class CraftLootTableMixin {
             target = "Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet$Builder;required(Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;)Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet$Builder;"
         )
     )
-    private LootContextParamSet.Builder makeRequiredOptional(LootContextParamSet.Builder instance, LootContextParam<?> parameter) {
+    private LootContextParamSet.Builder monumenta$makeRequiredOptional(LootContextParamSet.Builder instance, LootContextParam<?> parameter) {
         return instance.optional(parameter);
     }
 
@@ -53,7 +53,7 @@ public class CraftLootTableMixin {
             target = "Ljava/util/Set;contains(Ljava/lang/Object;)Z"
         )
     )
-    private boolean alwaysAddParam(boolean original) { // :3
+    private boolean monumenta$alwaysAddParam(boolean original) { // :3
         return true;
     }
 }

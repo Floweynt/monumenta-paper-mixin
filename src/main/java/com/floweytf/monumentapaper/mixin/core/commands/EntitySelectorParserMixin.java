@@ -36,7 +36,7 @@ public class EntitySelectorParserMixin implements EntitySelectorParserAccessor {
             intValue = 1
         )
     )
-    private static int modifyDefaultPredicate(int constant, Entity e) {
+    private static int monumenta$modifyDefaultPredicate(int constant, Entity e) {
         return e.isAlive() ? 1 : 0;
     }
 
@@ -44,7 +44,7 @@ public class EntitySelectorParserMixin implements EntitySelectorParserAccessor {
         method = "<init>(Lcom/mojang/brigadier/StringReader;ZZ)V",
         at = @At("RETURN")
     )
-    private void setWorldLimited(StringReader reader, boolean atAllowed, boolean parsingEntityArgumentSuggestions, CallbackInfo ci) {
+    private void monumenta$setWorldLimited(StringReader reader, boolean atAllowed, boolean parsingEntityArgumentSuggestions, CallbackInfo ci) {
         this.worldLimited = true;
     }
 

@@ -22,7 +22,7 @@ public class ConcretePowderBlockMixin {
         at = @At("HEAD"),
         cancellable = true
     )
-    private static void disableConcreteSolidify(BlockGetter world, BlockPos pos, BlockState state, CallbackInfoReturnable<Boolean> cir) {
+    private static void monumenta$disableConcreteSolidify(BlockGetter world, BlockPos pos, BlockState state, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(false);
         cir.cancel();
     }

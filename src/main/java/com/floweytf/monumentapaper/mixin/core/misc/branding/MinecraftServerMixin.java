@@ -19,7 +19,7 @@ public class MinecraftServerMixin {
         method = "getServerModName",
         constant = @Constant(stringValue = "Paper")
     )
-    private String modifyGetServerModName(String old) {
+    private String monumenta$modifyGetServerModName(String old) {
         return PaperPatches.IDENTIFIER;
     }
 }

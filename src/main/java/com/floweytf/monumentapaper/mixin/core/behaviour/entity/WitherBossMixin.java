@@ -32,7 +32,7 @@ public abstract class WitherBossMixin extends Monster {
             target = "Lnet/minecraft/world/entity/boss/wither/WitherBoss;isPowered()Z"
         )
     )
-    private boolean disableArrowInvulnerability(boolean original) {
+    private boolean monumenta$disableArrowInvulnerability(boolean original) {
         return false;
     }
 

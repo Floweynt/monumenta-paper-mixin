@@ -21,7 +21,7 @@ public class CoralBlockMixin {
         at = @At("HEAD"),
         cancellable = true
     )
-    private void disableCoralDeath(BlockGetter world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+    private void monumenta$disableCoralDeath(BlockGetter world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
         cir.cancel();
     }

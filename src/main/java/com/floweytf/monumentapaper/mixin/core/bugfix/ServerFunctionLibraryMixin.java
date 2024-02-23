@@ -33,7 +33,7 @@ public class ServerFunctionLibraryMixin {
             target = "Lnet/minecraft/resources/FileToIdConverter;listMatchingResources(Lnet/minecraft/server/packs/resources/ResourceManager;)Ljava/util/Map;"
         )
     )
-    private static Map<ResourceLocation, Resource> disableFunctionOnFirstLoad(FileToIdConverter instance, ResourceManager resourceManager) {
+    private static Map<ResourceLocation, Resource> monumenta$disableFunctionOnFirstLoad(FileToIdConverter instance, ResourceManager resourceManager) {
         if (monumenta$isInitialFunctionLoad) {
             return new FileToIdConverter("functions", ".nope.nope.nope.nope.Monumenta.nope")
                 .listMatchingResources(resourceManager);
@@ -49,7 +49,7 @@ public class ServerFunctionLibraryMixin {
             target = "Lcom/google/common/collect/ImmutableMap$Builder;build()Lcom/google/common/collect/ImmutableMap;"
         )
     )
-    private void onReload(Pair<?, ?> intermediate, CallbackInfo ci) {
+    private void monumenta$onReload(Pair<?, ?> intermediate, CallbackInfo ci) {
         monumenta$isInitialFunctionLoad = false;
     }
 }

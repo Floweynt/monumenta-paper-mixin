@@ -38,7 +38,7 @@ public abstract class EnderManMixin extends Monster {
             target = "Lnet/minecraft/world/entity/monster/EnderMan;tryEscape(Lcom/destroystokyo/paper/event/entity/EndermanEscapeEvent$Reason;)Z"
         )
     )
-    private boolean storeTryEscapeRes(
+    private boolean monumenta$storeTryEscapeRes(
         boolean original,
         @Share("hasEscaped") LocalBooleanRef ref
     ) {
@@ -50,7 +50,7 @@ public abstract class EnderManMixin extends Monster {
         method = "hurt",
         at = @At("TAIL")
     )
-    private boolean modifyHurtReturnValue(
+    private boolean monumenta$modifyHurtReturnValue(
         boolean original, DamageSource source, float amount,
         @Share("hasEscaped") LocalBooleanRef ref
     ) {

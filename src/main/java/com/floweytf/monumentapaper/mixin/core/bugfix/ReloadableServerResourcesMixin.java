@@ -27,7 +27,7 @@ public class ReloadableServerResourcesMixin {
             target = "(Lnet/minecraft/commands/Commands$CommandSelection;Lnet/minecraft/commands/CommandBuildContext;)Lnet/minecraft/commands/Commands;"
         )
     )
-    private Commands cacheCommandInstance(Commands.CommandSelection commandSelection, CommandBuildContext environment, Operation<Commands> original) {
+    private Commands monumenta$cacheCommandInstance(Commands.CommandSelection commandSelection, CommandBuildContext environment, Operation<Commands> original) {
         if(monumenta$commandsInstance == null) {
             monumenta$commandsInstance = original.call(commandSelection, environment);
         }

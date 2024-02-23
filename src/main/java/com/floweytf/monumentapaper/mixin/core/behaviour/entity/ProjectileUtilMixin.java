@@ -23,7 +23,7 @@ public class ProjectileUtilMixin {
         at = @At("HEAD"),
         cancellable = true
     )
-    private static void returnMainhandIfBow(LivingEntity entity, Item item, CallbackInfoReturnable<InteractionHand> cir) {
+    private static void monumenta$returnMainhandIfBow(LivingEntity entity, Item item, CallbackInfoReturnable<InteractionHand> cir) {
         if (Items.BOW == item) {
             cir.setReturnValue(InteractionHand.MAIN_HAND);
             cir.cancel();

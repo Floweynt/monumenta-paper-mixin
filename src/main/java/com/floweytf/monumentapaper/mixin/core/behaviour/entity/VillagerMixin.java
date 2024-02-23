@@ -35,7 +35,7 @@ public abstract class VillagerMixin extends AbstractVillager {
         method = "<init>(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/npc/VillagerType;)V",
         constant = @Constant(intValue = 1, ordinal = 0)
     )
-    private int disableOpeningDoors(int constant) {
+    private int monumenta$disableOpeningDoors(int constant) {
         // False == 0 according to JVM
         return 0;
     }

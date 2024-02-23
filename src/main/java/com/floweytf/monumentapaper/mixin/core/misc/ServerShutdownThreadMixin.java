@@ -18,7 +18,7 @@ public class ServerShutdownThreadMixin {
         method = "run",
         constant = @Constant(intValue = 1000)
     )
-    private int modifyWaitTime(int constant) {
+    private int monumenta$modifyWaitTime(int constant) {
         return MiscConfiguration.getServerShutdownTime();
     }
 }

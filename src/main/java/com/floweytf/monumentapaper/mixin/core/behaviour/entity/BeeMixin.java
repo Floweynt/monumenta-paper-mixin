@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  * @author Flowey
  * @mm-patch 0024-Monumenta-Remove-bee-death-neutral-after-sting.patch
  *
- * Bees should not loose agro on death
+ * Bees should not lose agro on death
  */
 @Mixin(Bee.class)
 public class BeeMixin {
@@ -21,7 +21,7 @@ public class BeeMixin {
             target = "Lnet/minecraft/world/entity/animal/Bee;setHasStung(Z)V"
         )
     )
-    private void cancelSetHasStung(Bee instance, boolean hasStung) {
+    private void monumenta$cancelSetHasStung(Bee instance, boolean hasStung) {
     }
 
     @Redirect(method = "doHurtTarget",
@@ -30,6 +30,6 @@ public class BeeMixin {
             target = "Lnet/minecraft/world/entity/animal/Bee;stopBeingAngry()V"
         )
     )
-    private void cancelStopBeingAngry(Bee instance) {
+    private void monumenta$cancelStopBeingAngry(Bee instance) {
     }
 }

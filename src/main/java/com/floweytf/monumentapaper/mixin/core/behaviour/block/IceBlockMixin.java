@@ -37,7 +37,7 @@ public class IceBlockMixin {
         at = @At("HEAD"),
         cancellable = true
     )
-    private void disableMelt(BlockState state, Level world, BlockPos pos, CallbackInfo ci) {
+    private void monumenta$disableMelt(BlockState state, Level world, BlockPos pos, CallbackInfo ci) {
         ci.cancel();
     }
 }

@@ -20,7 +20,7 @@ public class ZombieMixin {
             target = "Lnet/minecraft/world/entity/monster/Zombie;startUnderWaterConversion(I)V"
         )
     )
-    private void disableConversion(Zombie instance, int ticksUntilWaterConversion) {
+    private void monumenta$disableConversion(Zombie instance, int ticksUntilWaterConversion) {
         // no-op
     }
 }

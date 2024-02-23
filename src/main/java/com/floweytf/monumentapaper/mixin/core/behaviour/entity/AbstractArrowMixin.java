@@ -31,7 +31,7 @@ public abstract class AbstractArrowMixin extends Entity {
         ),
         cancellable = true
     )
-    private void disableBounce(EntityHitResult entityHitResult, CallbackInfo ci) {
+    private void monumenta$disableBounce(EntityHitResult entityHitResult, CallbackInfo ci) {
         if(getPierceLevel() <= 10) {
             discard();
         }

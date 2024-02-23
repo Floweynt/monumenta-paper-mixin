@@ -50,7 +50,7 @@ public abstract class ServerPlayerMixin extends Player {
         ),
         cancellable = true
     )
-    private void alwaysAllowSleeping(BlockPos _0, Direction _1, CallbackInfoReturnable<Either<Player.BedSleepingProblem, Unit>> cir) {
+    private void monumenta$alwaysAllowSleeping(BlockPos _0, Direction _1, CallbackInfoReturnable<Either<Player.BedSleepingProblem, Unit>> cir) {
         cir.setReturnValue(Either.right(Unit.INSTANCE));
         cir.cancel();
     }
@@ -63,7 +63,7 @@ public abstract class ServerPlayerMixin extends Player {
             target = "Lnet/minecraft/world/entity/player/Player;startSleepInBed(Lnet/minecraft/core/BlockPos;Z)Lcom/mojang/datafixers/util/Either;"
         )
     )
-    private void setSpawn(BlockPos pos, boolean _0, CallbackInfoReturnable<Either<BedSleepingProblem, Unit>> cir) {
+    private void monumenta$setSpawn(BlockPos pos, boolean _0, CallbackInfoReturnable<Either<BedSleepingProblem, Unit>> cir) {
         this.setRespawnPosition(
             level().dimension(),
             pos,

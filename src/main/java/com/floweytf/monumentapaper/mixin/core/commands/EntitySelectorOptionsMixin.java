@@ -38,7 +38,7 @@ public abstract class EntitySelectorOptionsMixin {
             ordinal = 2
         )
     )
-    private static void registerAllWorlds(CallbackInfo ci) {
+    private static void monumenta$registerAllWorlds(CallbackInfo ci) {
         register("all_worlds",
             (reader) -> {
                 int i = reader.getReader().getCursor();

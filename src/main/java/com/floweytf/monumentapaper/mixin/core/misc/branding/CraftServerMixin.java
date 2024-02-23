@@ -18,7 +18,7 @@ public class CraftServerMixin {
         method = "<init>",
         constant = @Constant(stringValue = "Paper")
     )
-    private String modifyServerName(String string) {
+    private String monumenta$modifyServerName(String string) {
         return PaperPatches.IDENTIFIER + string;
     }
 
@@ -29,7 +29,7 @@ public class CraftServerMixin {
             value = "INVOKE"
         )
     )
-    private String modifyImplementationVersion(String original) {
+    private String monumenta$modifyImplementationVersion(String original) {
         return original.replace("Paper", PaperPatches.IDENTIFIER + "Paper");
     }
 }

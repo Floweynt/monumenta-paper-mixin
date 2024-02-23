@@ -26,7 +26,7 @@ public class SpawnerBlockEntityMixin {
         method = "<init>",
         at = @At("TAIL")
     )
-    private void setBlockPosOnConstruction(BlockPos pos, BlockState state, CallbackInfo ci) {
+    private void monumenta$setBlockPosOnConstruction(BlockPos pos, BlockState state, CallbackInfo ci) {
         ((SpawnerAccessor) this.spawner).setBlockPos(pos);
     }
 }

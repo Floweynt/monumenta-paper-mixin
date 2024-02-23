@@ -57,7 +57,7 @@ public class PlayerAdvancementsMixin {
             target = "Lcom/google/gson/GsonBuilder;setPrettyPrinting()Lcom/google/gson/GsonBuilder;"
         )
     )
-    private static GsonBuilder removePrettyPrint(GsonBuilder builder) {
+    private static GsonBuilder monumenta$removePrettyPrint(GsonBuilder builder) {
         return builder;
     }
 
@@ -66,7 +66,7 @@ public class PlayerAdvancementsMixin {
         method = "load",
         at = @At("HEAD")
     )
-    private void setupAdvancementLoadEvent(
+    private void monumenta$setupAdvancementLoadEvent(
         CallbackInfo ci,
         // Introduce a new local variable for the event
         @Share("event") LocalRef<PlayerAdvancementDataLoadEvent> eventRef
@@ -85,7 +85,7 @@ public class PlayerAdvancementsMixin {
         ),
         index = 2
     )
-    private Object logActualSavePath(Object arg1) {
+    private Object monumenta$logActualSavePath(Object arg1) {
         return monumenta$actualPlayerSavePath.get();
     }
 
@@ -97,7 +97,7 @@ public class PlayerAdvancementsMixin {
             target = "Ljava/nio/file/Files;isRegularFile(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z"
         )
     )
-    private boolean enableLoadIfEventHasJson(
+    private boolean monumenta$enableLoadIfEventHasJson(
         boolean original,
         @Share("event") LocalRef<PlayerAdvancementDataLoadEvent> eventRef
     ) {
@@ -113,7 +113,7 @@ public class PlayerAdvancementsMixin {
         ),
         index = 1
     )
-    private Object modifyLoadLoggedPath(
+    private Object monumenta$modifyLoadLoggedPath(
         Object arg1,
         @Share("event") LocalRef<PlayerAdvancementDataLoadEvent> eventRef
     ) {
@@ -129,7 +129,7 @@ public class PlayerAdvancementsMixin {
         ),
         index = 0
     )
-    private Reader modifyLoadReadSource(
+    private Reader monumenta$modifyLoadReadSource(
         Reader reader,
         @Share("event") LocalRef<PlayerAdvancementDataLoadEvent> eventRef
     ) {
@@ -144,7 +144,7 @@ public class PlayerAdvancementsMixin {
     // Fix logging, this isn't really idea
     // I'd like to avoid doing this in the future
     @ModifyArg(method = "lambda$applyFrom$0", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V"), require = 1, index = 2)
-    private Object modifyLoadLoggedPath(Object arg) {
+    private Object monumenta$modifyLoadLoggedPath(Object arg) {
         return monumenta$actualPlayerSavePath;
     }
 
@@ -161,7 +161,7 @@ public class PlayerAdvancementsMixin {
             target = "Lnet/minecraft/Util;getOrThrow(Lcom/mojang/serialization/DataResult;Ljava/util/function/Function;)Ljava/lang/Object;"
         )
     )
-    private Object setupSaveEvent(
+    private Object monumenta$setupSaveEvent(
         Object original,
         // create event local variable
         @Share("event") LocalRef<PlayerAdvancementDataSaveEvent> eventRef
@@ -181,7 +181,7 @@ public class PlayerAdvancementsMixin {
         ),
         cancellable = true
     )
-    private void cancelSaveEvent(
+    private void monumenta$cancelSaveEvent(
         CallbackInfo ci,
         @Share("event") LocalRef<PlayerAdvancementDataSaveEvent> eventRef
     ) {
@@ -196,7 +196,7 @@ public class PlayerAdvancementsMixin {
             target = "Lnet/minecraft/FileUtil;createDirectoriesSafe(Ljava/nio/file/Path;)V"
         )
     )
-    private void createSaveDir(
+    private void monumenta$createSaveDir(
         Path path,
         @Share("event") LocalRef<PlayerAdvancementDataSaveEvent> eventRef
     ) throws IOException {
@@ -214,7 +214,7 @@ public class PlayerAdvancementsMixin {
         ),
         index = 0
     )
-    private Path modifySaveFileDestination(
+    private Path monumenta$modifySaveFileDestination(
         Path path,
         @Share("event") LocalRef<PlayerAdvancementDataSaveEvent> eventRef
     ) {
@@ -229,7 +229,7 @@ public class PlayerAdvancementsMixin {
         ),
         index = 1
     )
-    private Object modifySaveLoggedPath(
+    private Object monumenta$modifySaveLoggedPath(
         Object ignored,
         @Share("event") LocalRef<PlayerAdvancementDataSaveEvent> eventRef
     ) {

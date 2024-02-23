@@ -19,7 +19,7 @@ public class TrackingRangeMixin {
         method = "getEntityTrackingRange",
         at = @At("TAIL")
     )
-    private static int increaseGiantTrackingRange(int original, Entity entity) {
+    private static int monumenta$increaseGiantTrackingRange(int original, Entity entity) {
         if (entity instanceof Giant) {
             return 96;
         }

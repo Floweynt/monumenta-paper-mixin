@@ -30,7 +30,7 @@ public abstract class ServerPlayerMixin extends Player {
         method = "die",
         at = @At("TAIL")
     )
-    private void onPlayerDeath(DamageSource damageSource, CallbackInfo ci) {
+    private void monumenta$onPlayerDeath(DamageSource damageSource, CallbackInfo ci) {
         var center = new Location(level().getWorld(), this.getX(), this.getY(), this.getZ());
         var nearbyEntities = level().getWorld().getNearbyEntities(center, 24.0d, 24.0d, 24.0d);
 
