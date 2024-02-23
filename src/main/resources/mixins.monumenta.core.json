@@ -40,6 +40,7 @@
         "bugfix.CraftLootTableMixin",
         "bugfix.ReloadableServerResourcesMixin",
         "bugfix.ServerFunctionLibraryMixin",
+        "bugfix.ServerGamePacketListenerImplMixin",
         "commands.EntitySelectorOptionsMixin",
         "commands.EntitySelectorParserMixin",
         "event.MinecraftServerMixin",
@@ -52,6 +53,6 @@
         "misc.branding.CraftServerMixin",
         "misc.branding.DedicatedServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "bugfix.ServerGamePacketListenerImplMixin"
+        "behaviour.MerchantOfferMixin"
     ]
 }
