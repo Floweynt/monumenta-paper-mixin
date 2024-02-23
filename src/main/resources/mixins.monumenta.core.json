@@ -50,7 +50,8 @@
         "misc.ServerGamePacketListenerImplMixin",
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
+        "misc.branding.DedicatedServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "misc.branding.DedicatedServerMixin"
+        "bugfix.ServerGamePacketListenerImplMixin"
     ]
 }
