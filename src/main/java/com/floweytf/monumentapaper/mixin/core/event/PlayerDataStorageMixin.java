@@ -1,6 +1,7 @@
 package com.floweytf.monumentapaper.mixin.core.event;
 
-import com.floweytf.monumentapaper.PaperPatches;
+import com.floweytf.monumentapaper.EarlyConstants;
+import com.floweytf.monumentapaper.Monumenta;
 import com.floweytf.monumentapaper.api.event.PlayerDataLoadEvent;
 import com.floweytf.monumentapaper.api.event.PlayerDataSaveEvent;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -14,7 +15,6 @@ import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
@@ -86,7 +86,7 @@ public class PlayerDataStorageMixin {
 
         if (event.getData() != null) {
             tag.set((CompoundTag) event.getData());
-            return PaperPatches.FAKE_FILE;
+            return Monumenta.FAKE_FILE;
         }
 
         return event.getPath();

@@ -33,6 +33,10 @@
         "behaviour.entity.ZombieMixin",
         "behaviour.player.ServerPlayerMixin",
         "behaviour.spawner.BaseSpawnerMixin",
+        "behaviour.spawner.EntityMixin",
+        "behaviour.spawner.MobMixin",
+        "behaviour.spawner.ServerPlayerMixin",
+        "behaviour.spawner.SpawnerBlockEntityMixin",
         "bugfix.CraftLootTableMixin",
         "bugfix.ReloadableServerResourcesMixin",
         "bugfix.ServerFunctionLibraryMixin",
@@ -47,9 +51,6 @@
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "behaviour.spawner.EntityMixin",
-        "behaviour.spawner.MobMixin",
-        "behaviour.spawner.ServerPlayerMixin",
-        "behaviour.spawner.SpawnerBlockEntityMixin"
+        "misc.branding.DedicatedServerMixin"
     ]
 }

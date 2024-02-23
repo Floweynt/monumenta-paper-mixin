@@ -1,5 +1,6 @@
 plugins {
     id("mod.base-conventions")
+    id("org.ajoberstar.grgit") version "5.2.2"
 }
 
 dependencies {
@@ -9,4 +10,12 @@ dependencies {
     remapper("net.fabricmc:tiny-remapper:0.10.1:fat")
 
     paperweight.paperDevBundle(libs.versions.paper)
+}
+
+tasks.jar {
+    manifest {
+        attributes["Git-Branch"] = grgit.branch.current().name
+        attributes["Git-Hash"] = grgit.log().first().id
+
+    }
 }

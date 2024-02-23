@@ -1,11 +1,10 @@
 package com.floweytf.monumentapaper.mixin.core.misc.branding;
 
-import com.floweytf.monumentapaper.PaperPatches;
+import com.floweytf.monumentapaper.Monumenta;
+import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-
-import net.minecraft.server.MinecraftServer;
 
 /**
  * @author Flowey
@@ -20,6 +19,6 @@ public class MinecraftServerMixin {
         constant = @Constant(stringValue = "Paper")
     )
     private String monumenta$modifyGetServerModName(String old) {
-        return PaperPatches.IDENTIFIER;
+        return Monumenta.IDENTIFIER;
     }
 }

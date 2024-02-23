@@ -1,10 +1,12 @@
 package com.floweytf.monumentapaper.mixin.core.misc.branding;
 
-import com.floweytf.monumentapaper.PaperPatches;
+import com.floweytf.monumentapaper.Monumenta;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import org.bukkit.craftbukkit.v1_20_R3.CraftServer;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 /**
  * @author Flowey
@@ -19,7 +21,7 @@ public class CraftServerMixin {
         constant = @Constant(stringValue = "Paper")
     )
     private String monumenta$modifyServerName(String string) {
-        return PaperPatches.IDENTIFIER + string;
+        return Monumenta.IDENTIFIER + string;
     }
 
     @ModifyExpressionValue(
@@ -30,6 +32,6 @@ public class CraftServerMixin {
         )
     )
     private String monumenta$modifyImplementationVersion(String original) {
-        return original.replace("Paper", PaperPatches.IDENTIFIER + "Paper");
+        return original.replace("Paper", Monumenta.IDENTIFIER + "Paper");
     }
 }
