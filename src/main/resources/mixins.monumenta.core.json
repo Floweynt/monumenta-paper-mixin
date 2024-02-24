@@ -53,6 +53,7 @@
         "misc.branding.CraftServerMixin",
         "misc.branding.DedicatedServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "behaviour.MerchantOfferMixin"
+        "api.DamageModifierMixin",
+        "behaviour.entity.CraftEventFactoryMixin"
     ]
 }

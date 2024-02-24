@@ -16,6 +16,5 @@ tasks.jar {
     manifest {
         attributes["Git-Branch"] = grgit.branch.current().name
         attributes["Git-Hash"] = grgit.log().first().id
-
     }
 }

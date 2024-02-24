@@ -1,5 +1,8 @@
 package com.floweytf.monumentapaper;
 
+import com.mojang.brigadier.ParseResults;
+import org.spongepowered.asm.mixin.Unique;
+
 import java.io.PrintStream;
 
 public class EarlyConstants {

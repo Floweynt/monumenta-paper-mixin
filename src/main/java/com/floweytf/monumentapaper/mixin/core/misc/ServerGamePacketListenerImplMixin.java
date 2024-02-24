@@ -1,8 +1,7 @@
 package com.floweytf.monumentapaper.mixin.core.misc;
 
-import com.floweytf.monumentapaper.api.MiscConfiguration;
+import com.floweytf.monumentapaper.api.MonumentaPaperAPI;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
-import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 
@@ -20,6 +19,6 @@ public class ServerGamePacketListenerImplMixin {
         constant = @Constant(intValue = 80)
     )
     private int monumenta$changeFlyingTickTime(int constant) {
-        return MiscConfiguration.getFlyingTickTime();
+        return MonumentaPaperAPI.getFlyingTickTime();
     }
 }

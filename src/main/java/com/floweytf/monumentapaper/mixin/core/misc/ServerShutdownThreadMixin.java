@@ -1,6 +1,6 @@
 package com.floweytf.monumentapaper.mixin.core.misc;
 
-import com.floweytf.monumentapaper.api.MiscConfiguration;
+import com.floweytf.monumentapaper.api.MonumentaPaperAPI;
 import org.bukkit.craftbukkit.v1_20_R3.util.ServerShutdownThread;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -19,6 +19,6 @@ public class ServerShutdownThreadMixin {
         constant = @Constant(intValue = 1000)
     )
     private int monumenta$modifyWaitTime(int constant) {
-        return MiscConfiguration.getServerShutdownTime();
+        return MonumentaPaperAPI.getServerShutdownTime();
     }
 }

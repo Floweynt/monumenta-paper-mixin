@@ -1,7 +1,9 @@
 package com.floweytf.monumentapaper;
 
+import com.mojang.brigadier.ParseResults;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Unique;
@@ -14,6 +16,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.Map;
 import java.util.WeakHashMap;
+import java.util.function.Function;
 import java.util.jar.Manifest;
 
 public class Monumenta {
@@ -77,4 +80,10 @@ public class Monumenta {
             return false;
         }
     };
+
+    public static ParseResults<?> CURRENT_COMMAND;
+    public static EntityDamageEvent.DamageModifier IFRAMES;
+
+    public static ThreadLocal<Function<? super Double, Double>> IFRAME_FUNC;
+    public static ThreadLocal<Double> IFRAME_VALUE;
 }
