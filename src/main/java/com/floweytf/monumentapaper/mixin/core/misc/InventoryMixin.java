@@ -18,12 +18,14 @@ import java.util.function.Predicate;
 /**
  * @author Flowey
  * @mm-patch 0020-Monumenta-Clear-Crafting-Slots-when-Clearing.patch
- *
+ * <p>
  * Clear Crafting Slots when Clearing
  */
 @Mixin(Inventory.class)
 public class InventoryMixin {
-    @Shadow @Final public Player player;
+    @Shadow
+    @Final
+    public Player player;
 
     @ModifyReturnValue(method = "clearOrCountMatchingItems", at = @At("TAIL"))
     private int monumenta$clearCraftingSlots(int original, Predicate<ItemStack> shouldRemove, int maxCount, Container craftingInventory) {

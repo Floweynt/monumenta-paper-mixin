@@ -15,12 +15,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /**
  * @author Flowey
  * @mm-patch 0025-Monumenta-Mobs-that-despawn-return-to-their-spawners.patch
- *
+ * <p>
  * Mobs that despawn return to their spawners
  */
 @Mixin(SpawnerBlockEntity.class)
 public class SpawnerBlockEntityMixin {
-    @Shadow @Final private BaseSpawner spawner;
+    @Shadow
+    @Final
+    private BaseSpawner spawner;
 
     @Inject(
         method = "<init>",

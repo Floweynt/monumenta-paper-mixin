@@ -19,17 +19,17 @@ import org.spongepowered.asm.mixin.injection.At;
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
  * @mm-patch 0037-Monumenta-Remove-vanilla-Enderman-teleportation.patch
- *
+ * <p>
  * "don't override for grass/light, use super value"
  */
 @Mixin(EnderMan.class)
 public abstract class EnderManMixin extends Monster {
-    @Shadow
-    protected abstract boolean tryEscape(EndermanEscapeEvent.Reason reason);
-
     protected EnderManMixin(EntityType<? extends Monster> type, Level world) {
         super(type, world);
     }
+
+    @Shadow
+    protected abstract boolean tryEscape(EndermanEscapeEvent.Reason reason);
 
     @ModifyExpressionValue(
         method = "hurt",

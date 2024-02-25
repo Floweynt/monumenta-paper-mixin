@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 /**
  * @author Flowey
  * @mm-patch 0017-Monumenta-Disable-a-bunch-of-villager-AI.patch
- *
+ * <p>
  * Delete a lot of vanilla MC behaviour for villagers
  */
 @Mixin(Villager.class)
@@ -29,7 +29,8 @@ public abstract class VillagerMixin extends AbstractVillager {
         super(type, world);
     }
 
-    @Shadow public abstract VillagerData getVillagerData();
+    @Shadow
+    public abstract VillagerData getVillagerData();
 
     @ModifyConstant(
         method = "<init>(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/npc/VillagerType;)V",

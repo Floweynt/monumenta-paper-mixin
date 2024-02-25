@@ -1,6 +1,5 @@
 package com.floweytf.monumentapaper.mixin.core.event;
 
-import com.floweytf.monumentapaper.EarlyConstants;
 import com.floweytf.monumentapaper.Monumenta;
 import com.floweytf.monumentapaper.api.event.PlayerDataLoadEvent;
 import com.floweytf.monumentapaper.api.event.PlayerDataSaveEvent;
@@ -15,7 +14,10 @@ import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.io.File;
@@ -24,7 +26,7 @@ import java.nio.file.Files;
 /**
  * @author Flowey
  * @mm-patch 0003-Monumenta-Add-events-for-loading-and-saving-player-d.patch
- *
+ * <p>
  * Implements player load/save events so plugins can provide custom data
  */
 @Mixin(PlayerDataStorage.class)
@@ -81,7 +83,7 @@ public class PlayerDataStorageMixin {
         )
     )
     private File monumenta$emitLoadEvent(File file, Player player, @Local LocalRef<CompoundTag> tag) {
-        PlayerDataLoadEvent event = new PlayerDataLoadEvent((CraftPlayer)(player.getBukkitEntity()), file);
+        PlayerDataLoadEvent event = new PlayerDataLoadEvent((CraftPlayer) (player.getBukkitEntity()), file);
         event.callEvent();
 
         if (event.getData() != null) {

@@ -9,12 +9,13 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 /**
  * @author Flowey
  * @mm-patch 0035-Monumenta-Remove-randomness-from-iron-golem-attacks.patch
- *
+ * <p>
  * Iron golem damage should be consistent
  */
 @Mixin(IronGolem.class)
 public abstract class IronGolemMixin {
-    @Shadow protected abstract float getAttackDamage();
+    @Shadow
+    protected abstract float getAttackDamage();
 
     // TODO: should we really call getAttachDamage again?
     @ModifyArg(

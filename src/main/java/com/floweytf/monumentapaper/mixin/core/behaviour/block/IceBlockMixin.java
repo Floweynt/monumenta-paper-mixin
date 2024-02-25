@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /**
  * @author Flowey
  * @mm-patch 0006-Monumenta-Block-behavior-changes.patch
- *
+ * <p>
  * Disable coral death
  */
 @Mixin(IceBlock.class)
@@ -32,12 +32,11 @@ public class IceBlockMixin {
         }
     }
 
-    @Inject(
-        method = "melt",
-        at = @At("HEAD"),
-        cancellable = true
-    )
-    private void monumenta$disableMelt(BlockState state, Level world, BlockPos pos, CallbackInfo ci) {
-        ci.cancel();
+    /**
+     * @author Flowey
+     * @reason Disable ice melting
+     */
+    @Overwrite
+    protected void melt(BlockState state, Level world, BlockPos pos) {
     }
 }

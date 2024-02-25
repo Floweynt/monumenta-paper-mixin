@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 /**
  * @author Flowey
  * @mm-patch 0013-Monumenta-Make-armor-unbreaking-work-the-same-as-too.patch
- *
+ * <p>
  * Remove armor unbreaking quirks
  */
 @Mixin(ItemStack.class)
@@ -24,6 +24,6 @@ public class ItemStackMixin {
         index = 1
     )
     private int monumenta$curveAmount(int amount) {
-        return (int)Math.min(amount, Math.sqrt(amount * 4));
+        return (int) Math.min(amount, Math.sqrt(amount * 4));
     }
 }

@@ -1,15 +1,16 @@
 package com.floweytf.monumentapaper.mixin.core.event;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-import java.nio.file.Path;
-
+import com.floweytf.monumentapaper.api.event.PlayerAdvancementDataLoadEvent;
 import com.floweytf.monumentapaper.api.event.PlayerAdvancementDataSaveEvent;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.sugar.Share;
+import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 import net.minecraft.FileUtil;
+import net.minecraft.server.PlayerAdvancements;
+import net.minecraft.server.level.ServerPlayer;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -20,31 +21,28 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.floweytf.monumentapaper.api.event.PlayerAdvancementDataLoadEvent;
-import com.google.gson.GsonBuilder;
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.sugar.Share;
-import com.llamalad7.mixinextras.sugar.ref.LocalRef;
-import net.minecraft.server.PlayerAdvancements;
-import net.minecraft.server.level.ServerPlayer;
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.nio.file.Path;
 
 /**
  * @author Flowey
  * @mm-patch 0002-Monumenta-Add-events-for-loading-and-saving-advancem.patch
- *
+ * <p>
  * Implements advancements load/save events so plugins can provide custom data
  */
 @Mixin(PlayerAdvancements.class)
 public class PlayerAdvancementsMixin {
     @Shadow
+    @Final
+    private static Gson GSON;
+    @Shadow
     private ServerPlayer player;
-
     @Shadow
     @Final
     private Path playerSavePath;
-
-    @Shadow @Final private static Gson GSON;
-
     @Unique
     private ThreadLocal<File> monumenta$actualPlayerSavePath = new ThreadLocal<>();
 
@@ -167,7 +165,7 @@ public class PlayerAdvancementsMixin {
         @Share("event") LocalRef<PlayerAdvancementDataSaveEvent> eventRef
     ) {
         var jsonelement = (JsonElement) original;
-        var event = new PlayerAdvancementDataSaveEvent(this.player.getBukkitEntity(), this.playerSavePath.toFile(), GSON.toJson(jsonelement)) ;
+        var event = new PlayerAdvancementDataSaveEvent(this.player.getBukkitEntity(), this.playerSavePath.toFile(), GSON.toJson(jsonelement));
         eventRef.set(event);
 
         return original;
@@ -185,7 +183,7 @@ public class PlayerAdvancementsMixin {
         CallbackInfo ci,
         @Share("event") LocalRef<PlayerAdvancementDataSaveEvent> eventRef
     ) {
-        if(!eventRef.get().callEvent())
+        if (!eventRef.get().callEvent())
             ci.cancel();
     }
 
@@ -201,7 +199,7 @@ public class PlayerAdvancementsMixin {
         @Share("event") LocalRef<PlayerAdvancementDataSaveEvent> eventRef
     ) throws IOException {
         var parentPath = eventRef.get().getPath().getParentFile();
-        if(parentPath != null) {
+        if (parentPath != null) {
             FileUtil.createDirectoriesSafe(parentPath.toPath());
         }
     }

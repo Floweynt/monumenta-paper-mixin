@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.Shadow;
 /**
  * @author Flowey
  * @mm-patch 0017-Monumenta-Disable-a-bunch-of-villager-AI.patch
- *
+ * <p>
  * Delete a lot of vanilla MC behaviour for villagers
  */
 @Mixin(VillagerGoalPackages.class)

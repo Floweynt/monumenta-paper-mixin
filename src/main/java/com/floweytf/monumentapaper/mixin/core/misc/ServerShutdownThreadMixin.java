@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 /**
  * @author Flowey
  * @mm-patch 0009-Monumenta-Increase-shutdown-grace-period-to-20s.patch
- *
+ * <p>
  * Make shutdown grace period configurable
  */
 @Mixin(ServerShutdownThread.class)

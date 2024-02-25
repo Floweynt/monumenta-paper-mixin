@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @author Flowey
  * @mm-patch 0021-Monumenta-Fix-shulker-NoAI-allowing-peeking.patch
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
- *
+ * <p>
  * Actually fix shulker peeking if NoAI is set
  * The actual patch doesn't work properly...
  */
@@ -30,7 +30,7 @@ public abstract class ShulkerMixin extends AbstractGolem {
         cancellable = true
     )
     private void monumenta$cancelSetPeekAmountIfNoAI(int peekAmount, CallbackInfo ci) {
-        if(isNoAi()) {
+        if (isNoAi()) {
             ci.cancel();
         }
     }

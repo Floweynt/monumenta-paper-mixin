@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 /**
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
- *
+ * <p>
  * "don't override for grass/light, use super value"
  */
 @Mixin(Animal.class)

@@ -1,15 +1,16 @@
 package com.floweytf.monumentapaper.api.event;
 
-import java.io.File;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
+
 /**
-  * Called when the server loads the playerdata data for a player
-  */
+ * Called when the server loads the playerdata data for a player
+ */
 public class PlayerDataLoadEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
 
@@ -23,6 +24,11 @@ public class PlayerDataLoadEvent extends PlayerEvent {
         super(who);
         this.data = null;
         this.path = path;
+    }
+
+    @NotNull
+    public static HandlerList getHandlerList() {
+        return handlers;
     }
 
     /**
@@ -76,11 +82,6 @@ public class PlayerDataLoadEvent extends PlayerEvent {
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return handlers;
-    }
-
-    @NotNull
-    public static HandlerList getHandlerList() {
         return handlers;
     }
 }

@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 /**
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
- *
+ * <p>
  * Only allow shooting from main hand
  */
 @Mixin(ProjectileUtil.class)

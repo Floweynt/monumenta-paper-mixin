@@ -1,21 +1,16 @@
 package com.floweytf.monumentapaper.mixin.core.behaviour.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.ConcretePowderBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * @author Flowey
  * @mm-patch 0006-Monumenta-Block-behavior-changes.patch
- *
+ * <p>
  * Disable concrete hardening when exposed to water in game
  */
 @Mixin(ConcretePowderBlock.class)

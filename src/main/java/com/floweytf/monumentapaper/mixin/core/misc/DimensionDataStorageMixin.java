@@ -13,7 +13,7 @@ import java.util.function.Function;
 /**
  * @author Flowey
  * @mm-patch 0010-Monumenta-Refuse-to-start-shard-if-scoreboard-fails-.patch
- *
+ * <p>
  * Exit on scoreboard load failure
  */
 @Mixin(DimensionDataStorage.class)

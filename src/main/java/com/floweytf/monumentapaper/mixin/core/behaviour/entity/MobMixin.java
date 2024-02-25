@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 /**
  * @author Flowey
  * @mm-patch 0034-Monumenta-Fix-passengers-breaking-controlling-mob-AI.patch
- *
+ * <p>
  * Fix passengers breaking/controlling mob AI
  */
 @Mixin(Mob.class)

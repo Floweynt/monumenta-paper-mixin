@@ -18,13 +18,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @author Flowey
  * @mm-patch 0011-Monumenta-Selectors-require-targets-to-be-alive.patch
  * @mm-patch 0019-Monumenta-Added-all_worlds-selector-argument.patch
- *
+ * <p>
  * Ensure that entity selectors requires entity is alive by default
  * Also implement entity selector stuff
  */
 @Mixin(EntitySelectorParser.class)
 public class EntitySelectorParserMixin implements EntitySelectorParserAccessor {
-    @Shadow private boolean worldLimited;
+    @Shadow
+    private boolean worldLimited;
 
     @Unique
     private boolean monumenta$worldLimitedSet = false;

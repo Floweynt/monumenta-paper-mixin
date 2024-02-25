@@ -1,12 +1,10 @@
 package com.floweytf.monumentapaper;
 
-import com.mojang.brigadier.ParseResults;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.Unique;
 import space.vectrix.ignite.Ignite;
 
 import java.io.File;
@@ -22,22 +20,38 @@ import java.util.jar.Manifest;
 public class Monumenta {
     public static final String IDENTIFIER = "Monumenta";
     public static final String MOD_ID = "monumenta";
+    public static final String VERSION = "1.0.0";
     public static final Logger LOGGER = LogManager.getLogger(IDENTIFIER);
     public static final String VER_HASH;
     public static final String VER_BRANCH;
     public static final String VER_VERSION;
 
-    private static final Map<ClassLoader, Manifest> MANIFESTS = Collections.synchronizedMap(new WeakHashMap<>());
+    // we create this dummy file object that never exists
+    // this tricks MC into not reading from file
+    public static final File FAKE_FILE = new File("") {
+        @Override
+        public boolean exists() {
+            return false;
+        }
+    };
 
+    // State management
+    public static ThreadLocal<Function<? super Double, Double>> IFRAME_FUNC;
+    public static ThreadLocal<Double> IFRAME_VALUE;
+
+    private static final Map<ClassLoader, Manifest> MANIFESTS = Collections.synchronizedMap(new WeakHashMap<>());
     public static @Nullable Manifest manifest(final @NotNull Class<?> clazz) {
         return MANIFESTS.computeIfAbsent(clazz.getClassLoader(), classLoader -> {
             final String classLocation = "/" + clazz.getName().replace(".", "/") + ".class";
             final URL resource = clazz.getResource(classLocation);
+
             if (resource == null) {
                 return null;
             }
+
             final String classFilePath = resource.toString().replace("\\", "/");
             final String archivePath = classFilePath.substring(0, classFilePath.length() - classLocation.length());
+
             try (final InputStream stream = new URL(archivePath + "/META-INF/MANIFEST.MF").openStream()) {
                 return new Manifest(stream);
             } catch (final IOException ex) {
@@ -71,19 +85,7 @@ public class Monumenta {
         VER_VERSION = version;
     }
 
-    // we create this dummy file object that never exists
-    // this tricks MC into not reading from file
-    @Unique
-    public static final File FAKE_FILE = new File("") {
-        @Override
-        public boolean exists() {
-            return false;
-        }
-    };
-
-    public static ParseResults<?> CURRENT_COMMAND;
-    public static EntityDamageEvent.DamageModifier IFRAMES;
-
-    public static ThreadLocal<Function<? super Double, Double>> IFRAME_FUNC;
-    public static ThreadLocal<Double> IFRAME_VALUE;
+    public static String getIdentifier() {
+        return String.format("MonumentaPaper (%s) v%s (%s-%s)", MOD_ID, VERSION, VER_BRANCH, VER_VERSION.substring(0, 7));
+    }
 }

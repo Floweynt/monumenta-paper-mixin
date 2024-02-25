@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Slice;
  * @author Flowey
  * @mm-patch 0007-Monumenta-Standardize-spawner-behaviour-for-all-enti.patch
  * @mm-patch 0025-Monumenta-Mobs-that-despawn-return-to-their-spawners.patch
- *
+ * <p>
  * Remove spawner checks
  */
 @Mixin(BaseSpawner.class)

@@ -1,6 +1,7 @@
 package com.floweytf.monumentapaper.mixin.core.behaviour.entity;
 
 import com.floweytf.monumentapaper.Monumenta;
+import com.floweytf.monumentapaper.api.MonumentaPaperAPI;
 import com.google.common.base.Function;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.world.damagesource.DamageSource;
@@ -16,7 +17,7 @@ import java.util.Map;
 
 /**
  * @mm-patch 0027-Monumenta-Handle-iframes-after-damage-event.patch
- *
+ * <p>
  * Add IFRAMES to event
  */
 @SuppressWarnings("deprecation")
@@ -40,7 +41,7 @@ public class CraftEventFactoryMixin {
         @Local(name = "modifiers") Map<EntityDamageEvent.DamageModifier, Double> modifiers,
         @Local(name = "modifierFunctions") Map<EntityDamageEvent.DamageModifier, Function<? super Double, Double>> modifierFunctions
     ) {
-        modifiers.put(Monumenta.IFRAMES, Monumenta.IFRAME_VALUE.get());
-        modifierFunctions.put(Monumenta.IFRAMES, (Function<? super Double, Double>) Monumenta.IFRAME_FUNC.get());
+        modifiers.put(MonumentaPaperAPI.IFRAMES, Monumenta.IFRAME_VALUE.get());
+        modifierFunctions.put(MonumentaPaperAPI.IFRAMES, (Function<? super Double, Double>) Monumenta.IFRAME_FUNC.get());
     }
 }

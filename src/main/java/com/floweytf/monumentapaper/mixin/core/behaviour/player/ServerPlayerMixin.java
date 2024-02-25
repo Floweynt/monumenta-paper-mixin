@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * @author Flowey
  * @mm-patch 0005-Monumenta-Removed-test-for-monsters-when-sleeping-in.patch
  * @mm-patch 0015-Monumenta-Move-spawnpoint-set-for-sleeping-in-bed-af.patch
- *
+ * <p>
  * Player sleeping patches
  */
 @Mixin(ServerPlayer.class)

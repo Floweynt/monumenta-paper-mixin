@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 /**
  * @author Flowey
  * @mm-patch 0025-Monumenta-Mobs-that-despawn-return-to-their-spawners.patch
- *
+ * <p>
  * Mobs that despawn return to their spawners
  */
 @Mixin(Mob.class)

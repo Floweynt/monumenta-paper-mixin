@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 /**
  * @author Flowey
  * @mm-patch 0022-Monumenta-Disable-Elder-Guardian-Mining-Fatigue.patch
- *
+ * <p>
  * Disable elder guardian mining fatigue application
  */
 @Mixin(ElderGuardian.class)

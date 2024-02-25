@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * @author Flowey
  * @mm-patch 0018-Monumenta-Ensure-minecraft-reload-uses-latest-Brigad.patch
- *
+ * <p>
  * Remove a bunch of CommandAPI errors
  */
 @Mixin(ServerFunctionLibrary.class)

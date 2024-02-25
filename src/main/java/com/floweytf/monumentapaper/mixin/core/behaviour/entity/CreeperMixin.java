@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 /**
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
- *
+ * <p>
  * Charged creepers no longer cause mob head drops
  */
 @Mixin(Creeper.class)

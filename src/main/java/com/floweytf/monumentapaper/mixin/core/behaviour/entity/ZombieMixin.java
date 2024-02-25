@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 /**
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
- *
+ * <p>
  * Ban zombie drowning
  */
 @Mixin(Zombie.class)

@@ -21,7 +21,8 @@ public abstract class AbstractArrowMixin extends Entity {
         super(type, world);
     }
 
-    @Shadow public abstract byte getPierceLevel();
+    @Shadow
+    public abstract byte getPierceLevel();
 
     @Inject(
         method = "onHitEntity",
@@ -32,7 +33,7 @@ public abstract class AbstractArrowMixin extends Entity {
         cancellable = true
     )
     private void monumenta$disableBounce(EntityHitResult entityHitResult, CallbackInfo ci) {
-        if(getPierceLevel() <= 10) {
+        if (getPierceLevel() <= 10) {
             discard();
         }
 

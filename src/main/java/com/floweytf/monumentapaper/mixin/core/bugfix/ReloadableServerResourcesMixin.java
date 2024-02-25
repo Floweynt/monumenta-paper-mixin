@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 /**
  * @author Flowey
  * @mm-patch 0018-Monumenta-Ensure-minecraft-reload-uses-latest-Brigad.patch
- *
+ * <p>
  * Remove a bunch of CommandAPI errors
  */
 @Mixin(ReloadableServerResources.class)
@@ -28,7 +28,7 @@ public class ReloadableServerResourcesMixin {
         )
     )
     private Commands monumenta$cacheCommandInstance(Commands.CommandSelection commandSelection, CommandBuildContext environment, Operation<Commands> original) {
-        if(monumenta$commandsInstance == null) {
+        if (monumenta$commandsInstance == null) {
             monumenta$commandsInstance = original.call(commandSelection, environment);
         }
 

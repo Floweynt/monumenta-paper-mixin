@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 /**
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
- *
+ * <p>
  * Withers can be hurt by arrows even below half health
  * Disable nether stars
  */

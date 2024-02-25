@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 /**
  * @author Flowey
  * @mm-patch 0012-Monumenta-Max-level-for-curse-of-vanishing-is-2.patch
- *
+ * <p>
  * Change curse of vanishing max level to 2
  */
 @Mixin(VanishingCurseEnchantment.class)

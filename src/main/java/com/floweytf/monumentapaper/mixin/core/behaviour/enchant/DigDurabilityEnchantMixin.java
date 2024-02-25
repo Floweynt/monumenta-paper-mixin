@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 /**
  * @author Flowey
  * @mm-patch 0013-Monumenta-Make-armor-unbreaking-work-the-same-as-too.patch
- *
+ * <p>
  * Remove armor unbreaking quirks
  */
 @Mixin(DigDurabilityEnchantment.class)

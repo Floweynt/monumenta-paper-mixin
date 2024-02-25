@@ -6,9 +6,10 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import com.llamalad7.mixinextras.sugar.ref.LocalFloatRef;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -23,7 +24,7 @@ import javax.annotation.Nullable;
  * @author Flowey
  * @mm-patch 0016-Monumenta-Reset-last-player-hurt-time-on-taking-any-.patch
  * @mm-patch 0027-Monumenta-Handle-iframes-after-damage-event.patch
- *
+ * <p>
  * Read this code at your own risk. I hate this.
  */
 @Mixin(LivingEntity.class)

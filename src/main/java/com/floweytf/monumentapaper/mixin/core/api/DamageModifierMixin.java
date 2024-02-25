@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 /**
  * @mm-patch 0027-Monumenta-Handle-iframes-after-damage-event.patch
- *
+ * <p>
  * Wanna know a "fun" secret?
  * Java enums aren't real, it's all a myth!
  * Which means we get to do *really* cursed things like this
@@ -24,10 +24,6 @@ public class DamageModifierMixin {
     @Final
     @Mutable
     private static DamageModifier[] $VALUES;
-
-    static {
-        Monumenta.IFRAMES = monumenta$addVariant("IFRAMES");
-    }
 
     @Invoker("<init>")
     public static DamageModifier monumenta$invokeInit(String internalName, int ord) {

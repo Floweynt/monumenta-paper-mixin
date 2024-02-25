@@ -18,7 +18,7 @@ import java.util.Random;
 /**
  * @author Flowey
  * @mm-patch 0023-Monumenta-Fix-Generating-Loot-Table-Contents.patch
- *
+ * <p>
  * Fix Generating Loot Table Contents
  */
 @Mixin(CraftLootTable.class)

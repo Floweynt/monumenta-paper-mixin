@@ -14,22 +14,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /**
  * @author Flowey
  * @mm-patch 0004-Monumenta-Move-player-saving-to-before-disabling-plu.patch
- *
+ * <p>
  * Move player save location
  */
 @Mixin(MinecraftServer.class)
 public class MinecraftServerMixin {
     @Shadow
-    private PlayerList playerList;
-
-    @Shadow
     @Final
     public static Logger LOGGER;
-
+    @Shadow
+    private PlayerList playerList;
     @Shadow
     private volatile boolean isRestarting;
 
-    @Shadow private volatile boolean isSaving;
+    @Shadow
+    private volatile boolean isSaving;
 
     // Start saving before plugins are disabled
     @Inject(

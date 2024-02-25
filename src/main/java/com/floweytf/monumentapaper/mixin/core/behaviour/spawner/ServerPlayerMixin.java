@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /**
  * @author Flowey
  * @mm-patch 0025-Monumenta-Mobs-that-despawn-return-to-their-spawners.patch
- *
+ * <p>
  * Mobs that despawn return to their spawners
  */
 @Mixin(ServerPlayer.class)
@@ -35,7 +35,7 @@ public abstract class ServerPlayerMixin extends Player {
         var nearbyEntities = level().getWorld().getNearbyEntities(center, 24.0d, 24.0d, 24.0d);
 
         for (var nearby : nearbyEntities) {
-            var accessor = (EntityAccessor) ((CraftEntity)nearby).getHandle();
+            var accessor = (EntityAccessor) ((CraftEntity) nearby).getHandle();
             accessor.setSpawner(null);
 
             if (this.getTags().contains("DelvesPlayer")) {

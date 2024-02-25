@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 /**
  * @author Flowey
  * @mm-patch 0001-Monumenta-MUST-BE-FIRST-Paperweight-build-changes-ba.patch
- *
+ * <p>
  * Implement some monumenta specific paper branding changes
  */
 @Mixin(CraftServer.class)

@@ -17,11 +17,6 @@ public class DedicatedServerMixin {
         )
     )
     private void logOurVersion(CallbackInfoReturnable<Boolean> cir) {
-        Monumenta.LOGGER.info(
-            "Running MonumentaPaper v{} ({} {})",
-            Monumenta.VER_VERSION,
-            Monumenta.VER_BRANCH,
-            Monumenta.VER_HASH.substring(0, 8)
-        );
+        Monumenta.LOGGER.info("Running {}", Monumenta.getIdentifier());
     }
 }
