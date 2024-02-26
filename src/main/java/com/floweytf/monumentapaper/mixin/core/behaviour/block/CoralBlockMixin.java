@@ -23,7 +23,7 @@ public class CoralBlockMixin {
      * @reason Disable coral death
      */
     @Overwrite
-    protected static boolean scanForWater(BlockGetter world, BlockPos pos) {
+    protected boolean scanForWater(BlockGetter world, BlockPos pos) {
         return true;
     }
 }

@@ -31,7 +31,7 @@ public class CraftEventFactoryMixin {
             ordinal = 0
         )
     )
-    private static void func(
+    private static void monumenta$addIframeModifier(
         Entity damagee, DamageSource source,
         double rawDamage, double hardHatModifier, double blockingModifier, double armorModifier,
         double resistanceModifier, double magicModifier, double absorptionModifier,

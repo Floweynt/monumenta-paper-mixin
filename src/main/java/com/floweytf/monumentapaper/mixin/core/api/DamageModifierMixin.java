@@ -25,6 +25,10 @@ public class DamageModifierMixin {
     @Mutable
     private static DamageModifier[] $VALUES;
 
+    static {
+        monumenta$addVariant("IFRAMES");
+    }
+
     @Invoker("<init>")
     public static DamageModifier monumenta$invokeInit(String internalName, int ord) {
         throw new AssertionError();

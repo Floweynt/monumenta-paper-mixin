@@ -20,7 +20,6 @@ import java.util.jar.Manifest;
 public class Monumenta {
     public static final String IDENTIFIER = "Monumenta";
     public static final String MOD_ID = "monumenta";
-    public static final String VERSION = "1.0.0";
     public static final Logger LOGGER = LogManager.getLogger(IDENTIFIER);
     public static final String VER_HASH;
     public static final String VER_BRANCH;
@@ -36,8 +35,8 @@ public class Monumenta {
     };
 
     // State management
-    public static ThreadLocal<Function<? super Double, Double>> IFRAME_FUNC;
-    public static ThreadLocal<Double> IFRAME_VALUE;
+    public static ThreadLocal<Function<? super Double, Double>> IFRAME_FUNC = new ThreadLocal<>();
+    public static ThreadLocal<Double> IFRAME_VALUE = new ThreadLocal<>();
 
     private static final Map<ClassLoader, Manifest> MANIFESTS = Collections.synchronizedMap(new WeakHashMap<>());
     public static @Nullable Manifest manifest(final @NotNull Class<?> clazz) {
@@ -86,6 +85,6 @@ public class Monumenta {
     }
 
     public static String getIdentifier() {
-        return String.format("MonumentaPaper (%s) v%s (%s-%s)", MOD_ID, VERSION, VER_BRANCH, VER_VERSION.substring(0, 7));
+        return String.format("MonumentaPaper (%s) v%s (%s-%s)", MOD_ID, VER_VERSION, VER_BRANCH, VER_HASH.substring(0, 7));
     }
 }
