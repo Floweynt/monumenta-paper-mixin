@@ -1,2 +1,5 @@
 # Monumenta-mixins
-Monumenta-paperfork implement in mixins w/ ignite
+Monumenta-paperfork implementation using mixins w/ ignite
+## TODO
+- Verify things work
+- Implement mcfunction control flow 
