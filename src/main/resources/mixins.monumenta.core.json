@@ -6,6 +6,7 @@
     "target": "@env(DEFAULT)",
     "compatibilityLevel": "JAVA_17",
     "server": [
+        "api.DamageModifierMixin",
         "behaviour.block.BaseCoralPlantTypeBlockMixin",
         "behaviour.block.ConcretePowderBlockMixin",
         "behaviour.block.CoralBlockMixin",
@@ -16,6 +17,7 @@
         "behaviour.entity.AbstractArrowMixin",
         "behaviour.entity.AnimalMixin",
         "behaviour.entity.BeeMixin",
+        "behaviour.entity.CraftEventFactoryMixin",
         "behaviour.entity.CreeperMixin",
         "behaviour.entity.ElderGuardianMixin",
         "behaviour.entity.EnderManMixin",
@@ -53,7 +55,7 @@
         "misc.branding.CraftServerMixin",
         "misc.branding.DedicatedServerMixin",
         "misc.branding.MinecraftServerMixin",
-        "api.DamageModifierMixin",
-        "behaviour.entity.CraftEventFactoryMixin"
-    ]
+        "commands.CommandFunctionMixin"
+    ],
+    "mixins": []
 }
