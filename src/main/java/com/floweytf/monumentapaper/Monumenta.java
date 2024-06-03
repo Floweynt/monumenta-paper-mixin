@@ -2,7 +2,6 @@ package com.floweytf.monumentapaper;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import space.vectrix.ignite.Ignite;
@@ -33,31 +32,10 @@ public class Monumenta {
             return false;
         }
     };
-
+    private static final Map<ClassLoader, Manifest> MANIFESTS = Collections.synchronizedMap(new WeakHashMap<>());
     // State management
     public static ThreadLocal<Function<? super Double, Double>> IFRAME_FUNC = new ThreadLocal<>();
     public static ThreadLocal<Double> IFRAME_VALUE = new ThreadLocal<>();
-
-    private static final Map<ClassLoader, Manifest> MANIFESTS = Collections.synchronizedMap(new WeakHashMap<>());
-    public static @Nullable Manifest manifest(final @NotNull Class<?> clazz) {
-        return MANIFESTS.computeIfAbsent(clazz.getClassLoader(), classLoader -> {
-            final String classLocation = "/" + clazz.getName().replace(".", "/") + ".class";
-            final URL resource = clazz.getResource(classLocation);
-
-            if (resource == null) {
-                return null;
-            }
-
-            final String classFilePath = resource.toString().replace("\\", "/");
-            final String archivePath = classFilePath.substring(0, classFilePath.length() - classLocation.length());
-
-            try (final InputStream stream = new URL(archivePath + "/META-INF/MANIFEST.MF").openStream()) {
-                return new Manifest(stream);
-            } catch (final IOException ex) {
-                return null;
-            }
-        });
-    }
 
     static {
         var hash = "Unknown";
@@ -84,7 +62,29 @@ public class Monumenta {
         VER_VERSION = version;
     }
 
+    public static @Nullable Manifest manifest(final @NotNull Class<?> clazz) {
+        return MANIFESTS.computeIfAbsent(clazz.getClassLoader(), classLoader -> {
+            final String classLocation = "/" + clazz.getName().replace(".", "/") + ".class";
+            final URL resource = clazz.getResource(classLocation);
+
+            if (resource == null) {
+                return null;
+            }
+
+            final String classFilePath = resource.toString().replace("\\", "/");
+            final String archivePath = classFilePath.substring(0, classFilePath.length() - classLocation.length());
+
+            try (final InputStream stream = new URL(archivePath + "/META-INF/MANIFEST.MF").openStream()) {
+                return new Manifest(stream);
+            } catch (final IOException ex) {
+                return null;
+            }
+        });
+    }
+
     public static String getIdentifier() {
-        return String.format("MonumentaPaper (%s) v%s (%s-%s)", MOD_ID, VER_VERSION, VER_BRANCH, VER_HASH.substring(0, 7));
+        return String.format(
+            "MonumentaPaper (%s) v%s (%s-%s)", MOD_ID, VER_VERSION, VER_BRANCH, VER_HASH.substring(0, 7)
+        );
     }
 }

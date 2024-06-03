@@ -10,13 +10,13 @@ import org.spongepowered.asm.mixin.Overwrite;
  * @author Flowey
  * @mm-patch 0013-Monumenta-Make-armor-unbreaking-work-the-same-as-too.patch
  * <p>
- * Remove armor unbreaking quirks
+ * Remove armor unbreaking quirks.
  */
 @Mixin(DigDurabilityEnchantment.class)
 public class DigDurabilityEnchantMixin {
     /**
      * @author Flowey
-     * @reason All items work like tools for unbreaking
+     * @reason All items work like tools for unbreaking.
      */
     @Overwrite
     public static boolean shouldIgnoreDurabilityDrop(ItemStack item, int level, RandomSource random) {

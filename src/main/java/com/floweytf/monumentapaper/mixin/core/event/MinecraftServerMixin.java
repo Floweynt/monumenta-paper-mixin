@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @author Flowey
  * @mm-patch 0004-Monumenta-Move-player-saving-to-before-disabling-plu.patch
  * <p>
- * Move player save location
+ * Move player save location.
  */
 @Mixin(MinecraftServer.class)
 public class MinecraftServerMixin {

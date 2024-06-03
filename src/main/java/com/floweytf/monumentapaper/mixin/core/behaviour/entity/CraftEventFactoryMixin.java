@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * @mm-patch 0027-Monumenta-Handle-iframes-after-damage-event.patch
  * <p>
- * Add IFRAMES to event
+ * Add IFRAMES to event.
  */
 @SuppressWarnings("deprecation")
 @Mixin(CraftEventFactory.class)
@@ -42,6 +42,7 @@ public class CraftEventFactoryMixin {
         @Local(name = "modifierFunctions") Map<EntityDamageEvent.DamageModifier, Function<? super Double, Double>> modifierFunctions
     ) {
         modifiers.put(MonumentaPaperAPI.IFRAMES, Monumenta.IFRAME_VALUE.get());
-        modifierFunctions.put(MonumentaPaperAPI.IFRAMES, (Function<? super Double, Double>) Monumenta.IFRAME_FUNC.get());
+        modifierFunctions.put(MonumentaPaperAPI.IFRAMES,
+            (Function<? super Double, Double>) Monumenta.IFRAME_FUNC.get());
     }
 }

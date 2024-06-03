@@ -1,6 +1,6 @@
-package com.floweytf.monumentapaper.accessor;
+package com.floweytf.monumentapaper.duck;
 
-public interface EntitySelectorParserAccessor {
+public interface EntitySelectorParserAccess {
     boolean getWorldLimited();
 
     void setWorldLimited(boolean b);

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
  * <p>
- * Increase viewing dist of giants
+ * Increase viewing dist of giants.
  */
 @Mixin(TrackingRange.class)
 public class TrackingRangeMixin {

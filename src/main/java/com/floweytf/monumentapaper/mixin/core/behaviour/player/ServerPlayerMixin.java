@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * @mm-patch 0005-Monumenta-Removed-test-for-monsters-when-sleeping-in.patch
  * @mm-patch 0015-Monumenta-Move-spawnpoint-set-for-sleeping-in-bed-af.patch
  * <p>
- * Player sleeping patches
+ * Player sleeping patches.
  */
 @Mixin(ServerPlayer.class)
 public abstract class ServerPlayerMixin extends Player {
@@ -45,12 +45,15 @@ public abstract class ServerPlayerMixin extends Player {
     @Inject(
         method = "getBedResult",
         at = @At(
-            target = "Lnet/minecraft/server/level/ServerPlayer;setRespawnPosition(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/BlockPos;FZZLcom/destroystokyo/paper/event/player/PlayerSetSpawnEvent$Cause;)Z",
+            target = "Lnet/minecraft/server/level/ServerPlayer;setRespawnPosition" +
+                "(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/BlockPos;" +
+                "FZZLcom/destroystokyo/paper/event/player/PlayerSetSpawnEvent$Cause;)Z",
             value = "INVOKE"
         ),
         cancellable = true
     )
-    private void monumenta$alwaysAllowSleeping(BlockPos _0, Direction _1, CallbackInfoReturnable<Either<Player.BedSleepingProblem, Unit>> cir) {
+    private void monumenta$alwaysAllowSleeping(BlockPos _0, Direction _1,
+                                               CallbackInfoReturnable<Either<Player.BedSleepingProblem, Unit>> cir) {
         cir.setReturnValue(Either.right(Unit.INSTANCE));
         cir.cancel();
     }
@@ -60,10 +63,12 @@ public abstract class ServerPlayerMixin extends Player {
         method = "startSleepInBed",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/player/Player;startSleepInBed(Lnet/minecraft/core/BlockPos;Z)Lcom/mojang/datafixers/util/Either;"
+            target = "Lnet/minecraft/world/entity/player/Player;startSleepInBed(Lnet/minecraft/core/BlockPos;Z)" +
+                "Lcom/mojang/datafixers/util/Either;"
         )
     )
-    private void monumenta$setSpawn(BlockPos pos, boolean _0, CallbackInfoReturnable<Either<BedSleepingProblem, Unit>> cir) {
+    private void monumenta$setSpawn(BlockPos pos, boolean _0,
+                                    CallbackInfoReturnable<Either<BedSleepingProblem, Unit>> cir) {
         this.setRespawnPosition(
             level().dimension(),
             pos,

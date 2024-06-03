@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
  * @author Flowey
  * @mm-patch 0012-Monumenta-Max-level-for-curse-of-vanishing-is-2.patch
  * <p>
- * Change curse of vanishing max level to 2
+ * Change curse of vanishing max level to 2.
  */
 @Mixin(VanishingCurseEnchantment.class)
 public class VanishingCurseEnchantmentMixin extends Enchantment {
@@ -18,7 +18,7 @@ public class VanishingCurseEnchantmentMixin extends Enchantment {
         super(rarity, target, slotTypes);
     }
 
-    // Mixin @Overrides will be properly mixed into the target class
+    // Mixin @Overrides will be properly mixed into the target class, which is convenient.
     @Override
     public int getMaxLevel() {
         return 2;

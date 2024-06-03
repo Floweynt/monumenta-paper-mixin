@@ -24,7 +24,7 @@ public abstract class AnimalMixin extends AgeableMob {
 
     /**
      * @author Flowey
-     * @reason don't override for grass/light, use super value
+     * @reason don't override for grass/light, use super value.
      */
     @Overwrite
     @Override

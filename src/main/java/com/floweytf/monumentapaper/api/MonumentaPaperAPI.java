@@ -9,11 +9,9 @@ public class MonumentaPaperAPI {
      * Don't worry about how this enumerator has an instance without patching API jar...
      */
     public static final EntityDamageEvent.DamageModifier IFRAMES = EntityDamageEvent.DamageModifier.valueOf("IFRAMES");
-
+    public static final String VERSION = Monumenta.VER_VERSION;
     private static int flyingTickTime = 120;
     private static int serverShutdownTime = 20000;
-
-    public static final String VERSION = Monumenta.VER_VERSION;
 
     public static int getFlyingTickTime() {
         return flyingTickTime;

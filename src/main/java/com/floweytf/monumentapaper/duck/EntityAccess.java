@@ -1,8 +1,8 @@
-package com.floweytf.monumentapaper.accessor;
+package com.floweytf.monumentapaper.duck;
 
 import net.minecraft.world.level.BaseSpawner;
 
-public interface EntityAccessor {
+public interface EntityAccess {
     BaseSpawner getSpawner();
 
     void setSpawner(BaseSpawner spawner);

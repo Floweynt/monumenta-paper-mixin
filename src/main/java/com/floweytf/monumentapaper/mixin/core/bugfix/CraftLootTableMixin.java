@@ -19,35 +19,42 @@ import java.util.Random;
  * @author Flowey
  * @mm-patch 0023-Monumenta-Fix-Generating-Loot-Table-Contents.patch
  * <p>
- * Fix Generating Loot Table Contents
+ * Fix generating loot table contents.
  */
 @Mixin(CraftLootTable.class)
 public class CraftLootTableMixin {
     @Inject(
-        method = "convertContext(Lorg/bukkit/loot/LootContext;Ljava/util/Random;)Lnet/minecraft/world/level/storage/loot/LootParams;",
+        method = "convertContext(Lorg/bukkit/loot/LootContext;Ljava/util/Random;)" +
+            "Lnet/minecraft/world/level/storage/loot/LootParams;",
         at = @At(
             value = "INVOKE",
             target = "Lorg/bukkit/loot/LootContext;getLootedEntity()Lorg/bukkit/entity/Entity;",
             ordinal = 0
         )
     )
-    private void monumenta$addWithLuck(LootContext context, Random random, CallbackInfoReturnable<LootParams> cir, @Local LootParams.Builder builder) {
+    private void monumenta$addWithLuck(LootContext context, Random random, CallbackInfoReturnable<LootParams> cir,
+                                       @Local LootParams.Builder builder) {
         builder.withLuck(context.getLuck());
     }
 
     @Redirect(
-        method = "convertContext(Lorg/bukkit/loot/LootContext;Ljava/util/Random;)Lnet/minecraft/world/level/storage/loot/LootParams;",
+        method = "convertContext(Lorg/bukkit/loot/LootContext;Ljava/util/Random;)" +
+            "Lnet/minecraft/world/level/storage/loot/LootParams;",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet$Builder;required(Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;)Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet$Builder;"
+            target = "Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet$Builder;required" +
+                "(Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;)" +
+                "Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet$Builder;"
         )
     )
-    private LootContextParamSet.Builder monumenta$makeRequiredOptional(LootContextParamSet.Builder instance, LootContextParam<?> parameter) {
+    private LootContextParamSet.Builder monumenta$makeRequiredOptional(LootContextParamSet.Builder instance,
+                                                                       LootContextParam<?> parameter) {
         return instance.optional(parameter);
     }
 
     @ModifyExpressionValue(
-        method = "convertContext(Lorg/bukkit/loot/LootContext;Ljava/util/Random;)Lnet/minecraft/world/level/storage/loot/LootParams;",
+        method = "convertContext(Lorg/bukkit/loot/LootContext;Ljava/util/Random;)" +
+            "Lnet/minecraft/world/level/storage/loot/LootParams;",
         at = @At(
             value = "INVOKE",
             target = "Ljava/util/Set;contains(Ljava/lang/Object;)Z"

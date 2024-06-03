@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.Unique;
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
  * <p>
- * Giant AI, Increase Giant view distance
+ * Giant AI, Increase Giant view distance.
  */
 @Mixin(Giant.class)
 public class GiantMixin extends Monster {

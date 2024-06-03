@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
  * @author Flowey
  * @mm-patch 0034-Monumenta-Fix-passengers-breaking-controlling-mob-AI.patch
  * <p>
- * Fix passengers breaking/controlling mob AI
+ * Fix passengers breaking/controlling mob AI.
  */
 @Mixin(Mob.class)
 public abstract class MobMixin extends LivingEntity {
@@ -23,7 +23,7 @@ public abstract class MobMixin extends LivingEntity {
 
     /**
      * @author Flowey
-     * @reason Remove passenger AI checks
+     * @reason Remove passenger AI checks.
      */
     @Overwrite
     @Nullable

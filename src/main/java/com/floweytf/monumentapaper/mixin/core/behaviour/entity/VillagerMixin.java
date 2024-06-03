@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
  * @author Flowey
  * @mm-patch 0017-Monumenta-Disable-a-bunch-of-villager-AI.patch
  * <p>
- * Delete a lot of vanilla MC behaviour for villagers
+ * Delete a lot of vanilla MC behaviour for villagers.
  */
 @Mixin(Villager.class)
 public abstract class VillagerMixin extends AbstractVillager {
@@ -33,7 +33,8 @@ public abstract class VillagerMixin extends AbstractVillager {
     public abstract VillagerData getVillagerData();
 
     @ModifyConstant(
-        method = "<init>(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/npc/VillagerType;)V",
+        method = "<init>(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;" +
+            "Lnet/minecraft/world/entity/npc/VillagerType;)V",
         constant = @Constant(intValue = 1, ordinal = 0)
     )
     private int monumenta$disableOpeningDoors(int constant) {
@@ -43,7 +44,7 @@ public abstract class VillagerMixin extends AbstractVillager {
 
     /**
      * @author Flowey
-     * @reason Disable more AI goals
+     * @reason Disable more AI goals.
      */
     @Overwrite
     private void registerBrainGoals(Brain<Villager> brain) {

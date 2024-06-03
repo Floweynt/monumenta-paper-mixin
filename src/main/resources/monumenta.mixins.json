@@ -6,6 +6,8 @@
     "target": "@env(DEFAULT)",
     "compatibilityLevel": "JAVA_17",
     "server": [
+        "api.DamageModifierMixin",
+        "behaviour.MerchantOfferMixin",
         "behaviour.block.BaseCoralPlantTypeBlockMixin",
         "behaviour.block.ConcretePowderBlockMixin",
         "behaviour.block.CoralBlockMixin",
@@ -16,6 +18,7 @@
         "behaviour.entity.AbstractArrowMixin",
         "behaviour.entity.AnimalMixin",
         "behaviour.entity.BeeMixin",
+        "behaviour.entity.CraftEventFactoryMixin",
         "behaviour.entity.CreeperMixin",
         "behaviour.entity.ElderGuardianMixin",
         "behaviour.entity.EnderManMixin",
@@ -38,11 +41,16 @@
         "behaviour.spawner.ServerPlayerMixin",
         "behaviour.spawner.SpawnerBlockEntityMixin",
         "bugfix.CraftLootTableMixin",
-        "bugfix.ReloadableServerResourcesMixin",
-        "bugfix.ServerFunctionLibraryMixin",
-        "bugfix.ServerGamePacketListenerImplMixin",
+        "commands.CallFunctionMixin",
+        "commands.CommandsMixin",
         "commands.EntitySelectorOptionsMixin",
         "commands.EntitySelectorParserMixin",
+        "commands.ExecuteCommandMixin",
+        "commands.ExecutionContextMixin",
+        "commands.ReloadableServerResourcesMixin",
+        "commands.ServerFunctionLibraryMixin",
+        "commands.ServerGamePacketListenerImplMixin",
+        "commands.UnboundEntryActionMixin",
         "event.MinecraftServerMixin",
         "event.PlayerAdvancementsMixin",
         "event.PlayerDataStorageMixin",
@@ -52,8 +60,6 @@
         "misc.ServerShutdownThreadMixin",
         "misc.branding.CraftServerMixin",
         "misc.branding.DedicatedServerMixin",
-        "misc.branding.MinecraftServerMixin",
-        "api.DamageModifierMixin",
-        "behaviour.entity.CraftEventFactoryMixin"
+        "misc.branding.MinecraftServerMixin"
     ]
 }

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Overwrite;
  * @author Flowey
  * @mm-patch 0022-Monumenta-Disable-Elder-Guardian-Mining-Fatigue.patch
  * <p>
- * Disable elder guardian mining fatigue application
+ * Disable elder guardian mining fatigue application.
  */
 @Mixin(ElderGuardian.class)
 public class ElderGuardianMixin extends Guardian {
@@ -23,6 +23,7 @@ public class ElderGuardianMixin extends Guardian {
      * @author Flowey
      * @reason Remove mining fatigue logic
      * There might be a more portable way of doing this...
+     * TODO: look for a more portable way.
      */
     @Overwrite
     protected void customServerAiStep() {

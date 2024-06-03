@@ -32,7 +32,7 @@ public class MerchantOfferMixin {
 
     /**
      * @author Flowey
-     * @reason Implement Logic
+     * @reason Implement Logic.
      */
     @Overwrite
     private boolean isRequiredItem(ItemStack given, ItemStack sample) {
@@ -54,7 +54,9 @@ public class MerchantOfferMixin {
                 monumenta$popDisplayIfPlain(sampleCopy);
             }
 
-            boolean tagMatches = !sampleCopy.hasTag() || originalCopy.hasTag() && NbtUtils.compareNbt(sampleCopy.getTag(), originalCopy.getTag(), false);
+            boolean tagMatches =
+                !sampleCopy.hasTag() || originalCopy.hasTag() && NbtUtils.compareNbt(sampleCopy.getTag(),
+                    originalCopy.getTag(), false);
             return ItemStack.isSameItem(originalCopy, sampleCopy) && tagMatches;
         }
     }

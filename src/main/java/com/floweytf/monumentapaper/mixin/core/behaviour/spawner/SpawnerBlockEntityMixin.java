@@ -1,6 +1,6 @@
 package com.floweytf.monumentapaper.mixin.core.behaviour.spawner;
 
-import com.floweytf.monumentapaper.accessor.SpawnerAccessor;
+import com.floweytf.monumentapaper.duck.SpawnerAccess;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @author Flowey
  * @mm-patch 0025-Monumenta-Mobs-that-despawn-return-to-their-spawners.patch
  * <p>
- * Mobs that despawn return to their spawners
+ * Mobs that despawn return to their spawners.
  */
 @Mixin(SpawnerBlockEntity.class)
 public class SpawnerBlockEntityMixin {
@@ -29,6 +29,6 @@ public class SpawnerBlockEntityMixin {
         at = @At("TAIL")
     )
     private void monumenta$setBlockPosOnConstruction(BlockPos pos, BlockState state, CallbackInfo ci) {
-        ((SpawnerAccessor) this.spawner).setBlockPos(pos);
+        ((SpawnerAccess) this.spawner).setBlockPos(pos);
     }
 }

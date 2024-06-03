@@ -1,4 +1,4 @@
-package com.floweytf.monumentapaper.mixin.core.bugfix;
+package com.floweytf.monumentapaper.mixin.core.commands;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
  * @author Flowey
  * @mm-patch 0018-Monumenta-Ensure-minecraft-reload-uses-latest-Brigad.patch
  * <p>
- * Remove a bunch of CommandAPI errors
+ * Remove a bunch of CommandAPI errors.
  */
 @Mixin(ReloadableServerResources.class)
 public class ReloadableServerResourcesMixin {
@@ -24,10 +24,12 @@ public class ReloadableServerResourcesMixin {
         method = "<init>",
         at = @At(
             value = "NEW",
-            target = "(Lnet/minecraft/commands/Commands$CommandSelection;Lnet/minecraft/commands/CommandBuildContext;)Lnet/minecraft/commands/Commands;"
+            target = "(Lnet/minecraft/commands/Commands$CommandSelection;Lnet/minecraft/commands/CommandBuildContext;" +
+                ")Lnet/minecraft/commands/Commands;"
         )
     )
-    private Commands monumenta$cacheCommandInstance(Commands.CommandSelection commandSelection, CommandBuildContext environment, Operation<Commands> original) {
+    private Commands monumenta$cacheCommandInstance(Commands.CommandSelection commandSelection,
+                                                    CommandBuildContext environment, Operation<Commands> original) {
         if (monumenta$commandsInstance == null) {
             monumenta$commandsInstance = original.call(commandSelection, environment);
         }

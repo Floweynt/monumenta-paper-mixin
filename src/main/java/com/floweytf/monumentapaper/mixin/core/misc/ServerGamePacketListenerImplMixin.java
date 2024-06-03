@@ -14,7 +14,8 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
  */
 @Mixin(ServerGamePacketListenerImpl.class)
 public class ServerGamePacketListenerImplMixin {
-    // TODO: should we also apply this change to aboveGroundVehicleTickCount? Current behaviour is yes, but restricting ordinal = 0 would fix
+    // TODO: should we also apply this change to aboveGroundVehicleTickCount? Current behaviour is yes, but
+    //  restricting ordinal = 0 would fix
     @ModifyConstant(
         method = "tick",
         constant = @Constant(intValue = 80)

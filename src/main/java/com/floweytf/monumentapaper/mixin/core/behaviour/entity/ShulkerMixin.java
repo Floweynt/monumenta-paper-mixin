@@ -15,8 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @mm-patch 0021-Monumenta-Fix-shulker-NoAI-allowing-peeking.patch
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
  * <p>
- * Actually fix shulker peeking if NoAI is set
- * The actual patch doesn't work properly...
+ * Fix shulker peeking if NoAI is set.
  */
 @Mixin(Shulker.class)
 public abstract class ShulkerMixin extends AbstractGolem {

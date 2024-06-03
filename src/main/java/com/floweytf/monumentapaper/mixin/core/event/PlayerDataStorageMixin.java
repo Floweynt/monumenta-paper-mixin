@@ -41,7 +41,8 @@ public class PlayerDataStorageMixin {
         method = "save",
         at = @At(
             value = "INVOKE",
-            target = "Ljava/nio/file/Files;createTempFile(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/String;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;"
+            target = "Ljava/nio/file/Files;createTempFile(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/String;" +
+                "[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;"
         ),
         cancellable = true
     )
@@ -94,4 +95,3 @@ public class PlayerDataStorageMixin {
         return event.getPath();
     }
 }
-

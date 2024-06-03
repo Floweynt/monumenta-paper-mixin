@@ -1,6 +1,6 @@
 package com.floweytf.monumentapaper.mixin.core.commands;
 
-import com.floweytf.monumentapaper.accessor.EntitySelectorParserAccessor;
+import com.floweytf.monumentapaper.duck.EntitySelectorParserAccess;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.selector.EntitySelectorParser;
 import net.minecraft.commands.arguments.selector.options.EntitySelectorOptions;
@@ -27,14 +27,18 @@ import static net.minecraft.commands.arguments.selector.options.EntitySelectorOp
 @Mixin(EntitySelectorOptions.class)
 public abstract class EntitySelectorOptionsMixin {
     @Shadow
-    private static void register(String id, EntitySelectorOptions.Modifier handler, Predicate<EntitySelectorParser> condition, Component description) {
+    private static void register(String id, EntitySelectorOptions.Modifier handler,
+                                 Predicate<EntitySelectorParser> condition, Component description) {
     }
 
     @Inject(
         method = "bootStrap",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/commands/arguments/selector/options/EntitySelectorOptions;register(Ljava/lang/String;Lnet/minecraft/commands/arguments/selector/options/EntitySelectorOptions$Modifier;Ljava/util/function/Predicate;Lnet/minecraft/network/chat/Component;)V",
+            target = "Lnet/minecraft/commands/arguments/selector/options/EntitySelectorOptions;register" +
+                "(Ljava/lang/String;Lnet/minecraft/commands/arguments/selector/options" +
+                "/EntitySelectorOptions$Modifier;Ljava/util/function/Predicate;Lnet/minecraft/network/chat/Component;" +
+                ")V",
             ordinal = 2
         )
     )
@@ -43,20 +47,21 @@ public abstract class EntitySelectorOptionsMixin {
             (reader) -> {
                 int i = reader.getReader().getCursor();
                 String string = reader.getReader().readUnquotedString();
-                reader.setSuggestions((builder, consumer) -> SharedSuggestionProvider.suggest(Arrays.asList("true", "false"), builder));
+                reader.setSuggestions((builder, consumer) -> SharedSuggestionProvider.suggest(Arrays.asList("true",
+                    "false"), builder));
                 switch (string) {
-                    case "true":
-                        ((EntitySelectorParserAccessor) reader).setWorldLimited(false);
-                        break;
-                    case "false":
-                        break;
-                    default:
-                        reader.getReader().setCursor(i);
-                        throw ERROR_UNKNOWN_OPTION.createWithContext(reader.getReader(), string);
+                case "true":
+                    ((EntitySelectorParserAccess) reader).setWorldLimited(false);
+                    break;
+                case "false":
+                    break;
+                default:
+                    reader.getReader().setCursor(i);
+                    throw ERROR_UNKNOWN_OPTION.createWithContext(reader.getReader(), string);
                 }
-                ((EntitySelectorParserAccessor) reader).setWorldLimitedSet(true);
+                ((EntitySelectorParserAccess) reader).setWorldLimitedSet(true);
             },
-            (reader) -> !((EntitySelectorParserAccessor) reader).getWorldLimitedSet(),
+            (reader) -> !((EntitySelectorParserAccess) reader).getWorldLimitedSet(),
             Component.literal("Select entities in all worlds")
         );
     }

@@ -1,11 +1,12 @@
 package com.floweytf.monumentapaper.mixin.core.behaviour.spawner;
 
-import com.floweytf.monumentapaper.accessor.EntityAccessor;
-import com.floweytf.monumentapaper.accessor.SpawnerAccessor;
+import com.floweytf.monumentapaper.duck.EntityAccess;
+import com.floweytf.monumentapaper.duck.SpawnerAccess;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.Level;
+import org.bukkit.event.entity.EntityRemoveEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  * @author Flowey
  * @mm-patch 0025-Monumenta-Mobs-that-despawn-return-to-their-spawners.patch
  * <p>
- * Mobs that despawn return to their spawners
+ * Mobs that despawn return to their spawners.
  */
 @Mixin(Mob.class)
 public abstract class MobMixin extends LivingEntity {
@@ -25,22 +26,22 @@ public abstract class MobMixin extends LivingEntity {
 
     @Unique
     private boolean monumenta$isDespawnCandidate() {
-        var spawner = ((EntityAccessor) this).getSpawner();
+        var spawner = ((EntityAccess) this).getSpawner();
 
         return spawner != null &&
             getHealth() >= 1 &&
             this.getY() > 0 &&
-            ((SpawnerAccessor) spawner).getBlockPos() != null;
+            ((SpawnerAccess) spawner).getBlockPos() != null;
     }
 
     @Unique
     public void monumenta$despawn() {
         if (monumenta$isDespawnCandidate()) {
             // Get the closest player to spawner
-            var spawner = ((EntityAccessor) this).getSpawner();
-            var delveReprime = ((EntityAccessor) this).getDelveReprime();
+            var spawner = ((EntityAccess) this).getSpawner();
+            var delveReprime = ((EntityAccess) this).getDelveReprime();
 
-            var pos = ((SpawnerAccessor) spawner).getBlockPos();
+            var pos = ((SpawnerAccess) spawner).getBlockPos();
             var player = level().getNearestPlayer(
                 pos.getX(),
                 pos.getY(),
@@ -73,10 +74,10 @@ public abstract class MobMixin extends LivingEntity {
         method = "checkDespawn",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/Mob;discard()V"
+            target = "Lnet/minecraft/world/entity/Mob;discard(Lorg/bukkit/event/entity/EntityRemoveEvent$Cause;)V"
         )
     )
-    private void monumenta$replaceDiscardDespawn(Mob instance) {
+    private void monumenta$replaceDiscardDespawn(Mob instance, EntityRemoveEvent.Cause cause) {
         monumenta$despawn();
     }
 }

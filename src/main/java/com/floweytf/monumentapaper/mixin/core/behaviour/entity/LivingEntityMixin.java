@@ -107,7 +107,8 @@ public abstract class LivingEntityMixin extends Entity {
         method = "actuallyHurt",
         at = @At(
             value = "NEW",
-            target = "(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/world/entity/LivingEntity$1;"
+            target = "(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/damagesource/DamageSource;)" +
+                "Lnet/minecraft/world/entity/LivingEntity$1;"
         ),
         index = 2,
         argsOnly = true
@@ -167,7 +168,8 @@ public abstract class LivingEntityMixin extends Entity {
         slice = @Slice(
             from = @At(
                 value = "INVOKE",
-                target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z",
+                target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt" +
+                    "(Lnet/minecraft/world/damagesource/DamageSource;F)Z",
                 ordinal = 1
             )
         )
@@ -184,7 +186,8 @@ public abstract class LivingEntityMixin extends Entity {
         slice = @Slice(
             from = @At(
                 value = "INVOKE",
-                target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z",
+                target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt" +
+                    "(Lnet/minecraft/world/damagesource/DamageSource;F)Z",
                 ordinal = 1
             )
         )
@@ -202,7 +205,8 @@ public abstract class LivingEntityMixin extends Entity {
         slice = @Slice(
             from = @At(
                 value = "INVOKE",
-                target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z",
+                target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt" +
+                    "(Lnet/minecraft/world/damagesource/DamageSource;F)Z",
                 ordinal = 1
             )
         )

@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.Shadow;
  * @author Flowey
  * @mm-patch 0017-Monumenta-Disable-a-bunch-of-villager-AI.patch
  * <p>
- * Delete a lot of vanilla MC behaviour for villagers
+ * Delete a lot of vanilla MC behaviour for villagers.
  */
 @Mixin(VillagerGoalPackages.class)
 public abstract class VillagerGoalPackagesMixin {
@@ -29,16 +29,17 @@ public abstract class VillagerGoalPackagesMixin {
 
     /**
      * @author Flowey
-     * @reason Disable a few POI things
+     * @reason Disable a few POI things.
      */
     @Overwrite
     public static ImmutableList<Pair<Integer, ? extends BehaviorControl<? super Villager>>> getCorePackage(VillagerProfession profession, float speed) {
-        return ImmutableList.of(Pair.of(0, new LookAtTargetSink(45, 90)), Pair.of(3, new LookAndFollowTradingPlayerSink(speed)));
+        return ImmutableList.of(Pair.of(0, new LookAtTargetSink(45, 90)), Pair.of(3,
+            new LookAndFollowTradingPlayerSink(speed)));
     }
 
     /**
      * @author Flowey
-     * @reason Disable a few idle rules
+     * @reason Disable a few idle rules.
      */
     @Overwrite
     public static ImmutableList<Pair<Integer, ? extends BehaviorControl<? super Villager>>> getIdlePackage(VillagerProfession profession, float speed) {

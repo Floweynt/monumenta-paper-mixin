@@ -1,7 +1,7 @@
 package com.floweytf.monumentapaper.mixin.core.behaviour.spawner;
 
 import com.destroystokyo.paper.event.entity.PreSpawnerSpawnEvent;
-import com.floweytf.monumentapaper.accessor.SpawnerAccessor;
+import com.floweytf.monumentapaper.duck.SpawnerAccess;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
@@ -20,10 +20,10 @@ import org.spongepowered.asm.mixin.injection.Slice;
  * @mm-patch 0007-Monumenta-Standardize-spawner-behaviour-for-all-enti.patch
  * @mm-patch 0025-Monumenta-Mobs-that-despawn-return-to-their-spawners.patch
  * <p>
- * Remove spawner checks
+ * Remove spawner checks.
  */
 @Mixin(BaseSpawner.class)
-public class BaseSpawnerMixin implements SpawnerAccessor {
+public class BaseSpawnerMixin implements SpawnerAccess {
     @Unique
     private BlockPos monumenta$blockPos = null;
 
@@ -31,7 +31,10 @@ public class BaseSpawnerMixin implements SpawnerAccessor {
         method = "serverTick",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/SpawnPlacements;checkSpawnRules(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)Z"
+            target = "Lnet/minecraft/world/entity/SpawnPlacements;checkSpawnRules" +
+                "(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/ServerLevelAccessor;" +
+                "Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/core/BlockPos;" +
+                "Lnet/minecraft/util/RandomSource;)Z"
         )
     )
     private boolean monumenta$disableMobSpawnCheck(boolean original, ServerLevel world, BlockPos pos) {
@@ -80,7 +83,8 @@ public class BaseSpawnerMixin implements SpawnerAccessor {
         method = "serverTick",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/Mob;checkSpawnRules(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/entity/MobSpawnType;)Z"
+            target = "Lnet/minecraft/world/entity/Mob;checkSpawnRules(Lnet/minecraft/world/level/LevelAccessor;" +
+                "Lnet/minecraft/world/entity/MobSpawnType;)Z"
         )
     )
     private boolean monumenta$moveMobObstructionCheck(

@@ -31,20 +31,20 @@ import java.nio.file.Path;
  * @author Flowey
  * @mm-patch 0002-Monumenta-Add-events-for-loading-and-saving-advancem.patch
  * <p>
- * Implements advancements load/save events so plugins can provide custom data
+ * Implements advancements load/save events so plugins can provide custom data.
  */
 @Mixin(PlayerAdvancements.class)
 public class PlayerAdvancementsMixin {
     @Shadow
     @Final
     private static Gson GSON;
+    @Unique
+    private final ThreadLocal<File> monumenta$actualPlayerSavePath = new ThreadLocal<>();
     @Shadow
     private ServerPlayer player;
     @Shadow
     @Final
     private Path playerSavePath;
-    @Unique
-    private ThreadLocal<File> monumenta$actualPlayerSavePath = new ThreadLocal<>();
 
     // Remove pretty printing for some reason
     // Basically, we redirect a call to setPrettyPrinting to a noop
@@ -141,7 +141,8 @@ public class PlayerAdvancementsMixin {
 
     // Fix logging, this isn't really idea
     // I'd like to avoid doing this in the future
-    @ModifyArg(method = "lambda$applyFrom$0", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V"), require = 1, index = 2)
+    @ModifyArg(method = "lambda$applyFrom$0", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;warn" +
+        "(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V"), require = 1, index = 2)
     private Object monumenta$modifyLoadLoggedPath(Object arg) {
         return monumenta$actualPlayerSavePath;
     }
@@ -156,7 +157,8 @@ public class PlayerAdvancementsMixin {
         method = "save",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/Util;getOrThrow(Lcom/mojang/serialization/DataResult;Ljava/util/function/Function;)Ljava/lang/Object;"
+            target = "Lnet/minecraft/Util;getOrThrow(Lcom/mojang/serialization/DataResult;" +
+                "Ljava/util/function/Function;)Ljava/lang/Object;"
         )
     )
     private Object monumenta$setupSaveEvent(
@@ -165,7 +167,8 @@ public class PlayerAdvancementsMixin {
         @Share("event") LocalRef<PlayerAdvancementDataSaveEvent> eventRef
     ) {
         var jsonelement = (JsonElement) original;
-        var event = new PlayerAdvancementDataSaveEvent(this.player.getBukkitEntity(), this.playerSavePath.toFile(), GSON.toJson(jsonelement));
+        var event = new PlayerAdvancementDataSaveEvent(this.player.getBukkitEntity(), this.playerSavePath.toFile(),
+            GSON.toJson(jsonelement));
         eventRef.set(event);
 
         return original;
@@ -208,7 +211,8 @@ public class PlayerAdvancementsMixin {
         method = "save",
         at = @At(
             value = "INVOKE",
-            target = "Ljava/nio/file/Files;newBufferedWriter(Ljava/nio/file/Path;Ljava/nio/charset/Charset;[Ljava/nio/file/OpenOption;)Ljava/io/BufferedWriter;"
+            target = "Ljava/nio/file/Files;newBufferedWriter(Ljava/nio/file/Path;Ljava/nio/charset/Charset;" +
+                "[Ljava/nio/file/OpenOption;)Ljava/io/BufferedWriter;"
         ),
         index = 0
     )

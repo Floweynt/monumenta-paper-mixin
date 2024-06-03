@@ -1,6 +1,6 @@
 package com.floweytf.monumentapaper.mixin.core.commands;
 
-import com.floweytf.monumentapaper.accessor.EntitySelectorParserAccessor;
+import com.floweytf.monumentapaper.duck.EntitySelectorParserAccess;
 import com.mojang.brigadier.StringReader;
 import net.minecraft.commands.arguments.selector.EntitySelectorParser;
 import net.minecraft.world.entity.Entity;
@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * Also implement entity selector stuff
  */
 @Mixin(EntitySelectorParser.class)
-public class EntitySelectorParserMixin implements EntitySelectorParserAccessor {
+public class EntitySelectorParserMixin implements EntitySelectorParserAccess {
     @Shadow
     private boolean worldLimited;
 
@@ -45,7 +45,8 @@ public class EntitySelectorParserMixin implements EntitySelectorParserAccessor {
         method = "<init>(Lcom/mojang/brigadier/StringReader;ZZ)V",
         at = @At("RETURN")
     )
-    private void monumenta$setWorldLimited(StringReader reader, boolean atAllowed, boolean parsingEntityArgumentSuggestions, CallbackInfo ci) {
+    private void monumenta$setWorldLimited(StringReader reader, boolean atAllowed,
+                                           boolean parsingEntityArgumentSuggestions, CallbackInfo ci) {
         this.worldLimited = true;
     }
 

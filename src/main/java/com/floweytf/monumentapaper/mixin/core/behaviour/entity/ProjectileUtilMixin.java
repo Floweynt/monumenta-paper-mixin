@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
  * <p>
- * Only allow shooting from main hand
+ * Only allow shooting from main hand.
  */
 @Mixin(ProjectileUtil.class)
 public class ProjectileUtilMixin {
@@ -23,7 +23,8 @@ public class ProjectileUtilMixin {
         at = @At("HEAD"),
         cancellable = true
     )
-    private static void monumenta$returnMainhandIfBow(LivingEntity entity, Item item, CallbackInfoReturnable<InteractionHand> cir) {
+    private static void monumenta$returnMainhandIfBow(LivingEntity entity, Item item,
+                                                      CallbackInfoReturnable<InteractionHand> cir) {
         if (Items.BOW == item) {
             cir.setReturnValue(InteractionHand.MAIN_HAND);
             cir.cancel();

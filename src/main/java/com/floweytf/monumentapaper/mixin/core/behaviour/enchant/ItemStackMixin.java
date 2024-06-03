@@ -17,7 +17,8 @@ public class ItemStackMixin {
         method = "hurt",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;getItemEnchantmentLevel(Lnet/minecraft/world/item/enchantment/Enchantment;Lnet/minecraft/world/item/ItemStack;)I",
+            target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;getItemEnchantmentLevel" +
+                "(Lnet/minecraft/world/item/enchantment/Enchantment;Lnet/minecraft/world/item/ItemStack;)I",
             shift = At.Shift.AFTER
         ),
         argsOnly = true,

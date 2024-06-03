@@ -1,6 +1,5 @@
 package com.floweytf.monumentapaper.mixin.core.behaviour.entity;
 
-import com.destroystokyo.paper.event.entity.EndermanEscapeEvent;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Share;
@@ -12,7 +11,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
 /**
@@ -28,21 +26,18 @@ public abstract class EnderManMixin extends Monster {
         super(type, world);
     }
 
-    @Shadow
-    protected abstract boolean tryEscape(EndermanEscapeEvent.Reason reason);
-
     @ModifyExpressionValue(
         method = "hurt",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/monster/EnderMan;tryEscape(Lcom/destroystokyo/paper/event/entity/EndermanEscapeEvent$Reason;)Z"
+            target = "Lnet/minecraft/world/entity/monster/EnderMan;tryEscape" +
+                "(Lcom/destroystokyo/paper/event/entity/EndermanEscapeEvent$Reason;)Z"
         )
     )
     private boolean monumenta$storeTryEscapeRes(
         boolean original,
         @Share("hasEscaped") LocalBooleanRef ref
     ) {
-        System.out.println(original);
         ref.set(original);
         return original;
     }
@@ -55,7 +50,6 @@ public abstract class EnderManMixin extends Monster {
         boolean original, DamageSource source, float amount,
         @Share("hasEscaped") LocalBooleanRef ref
     ) {
-        System.out.println(ref.get());
         if (ref.get())
             return original;
         return original || super.hurt(source, amount);
@@ -63,7 +57,7 @@ public abstract class EnderManMixin extends Monster {
 
     /**
      * @author Flowey
-     * @reason MONUMENTA - ignore carrying item
+     * @reason Ignore carrying item.
      */
     @Overwrite
     public boolean requiresCustomPersistence() {
@@ -72,7 +66,7 @@ public abstract class EnderManMixin extends Monster {
 
     /**
      * @author Flowey
-     * @reason Disable TP
+     * @reason Disable TP.
      */
     @Overwrite
     public boolean teleport() {

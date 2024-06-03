@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.Overwrite;
  * @author Flowey
  * @mm-patch 0017-Monumenta-Disable-a-bunch-of-villager-AI.patch
  * <p>
- * Delete a lot of vanilla MC behaviour for villagers
+ * Delete a lot of vanilla MC behaviour for villagers.
  */
 @Mixin(WanderingTrader.class)
 public abstract class WanderingTraderMixin extends AbstractVillager {
@@ -26,7 +26,7 @@ public abstract class WanderingTraderMixin extends AbstractVillager {
 
     /**
      * @author Flowey
-     * @reason Remove AI
+     * @reason Remove AI.
      */
     @Overwrite
     protected void registerGoals() {

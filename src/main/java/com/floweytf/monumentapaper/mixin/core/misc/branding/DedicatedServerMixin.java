@@ -16,7 +16,7 @@ public class DedicatedServerMixin {
             target = "Lorg/spigotmc/SpigotConfig;init(Ljava/io/File;)V"
         )
     )
-    private void logOurVersion(CallbackInfoReturnable<Boolean> cir) {
+    private void monumenta$logOurVersion(CallbackInfoReturnable<Boolean> cir) {
         Monumenta.LOGGER.info("Running {}", Monumenta.getIdentifier());
     }
 }

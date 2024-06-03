@@ -1,6 +1,6 @@
 package com.floweytf.monumentapaper.mixin.core.behaviour.spawner;
 
-import com.floweytf.monumentapaper.accessor.EntityAccessor;
+import com.floweytf.monumentapaper.duck.EntityAccess;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @author Flowey
  * @mm-patch 0025-Monumenta-Mobs-that-despawn-return-to-their-spawners.patch
  * <p>
- * Mobs that despawn return to their spawners
+ * Mobs that despawn return to their spawners.
  */
 @Mixin(ServerPlayer.class)
 public abstract class ServerPlayerMixin extends Player {
@@ -35,7 +35,7 @@ public abstract class ServerPlayerMixin extends Player {
         var nearbyEntities = level().getWorld().getNearbyEntities(center, 24.0d, 24.0d, 24.0d);
 
         for (var nearby : nearbyEntities) {
-            var accessor = (EntityAccessor) ((CraftEntity) nearby).getHandle();
+            var accessor = (EntityAccess) ((CraftEntity) nearby).getHandle();
             accessor.setSpawner(null);
 
             if (this.getTags().contains("DelvesPlayer")) {

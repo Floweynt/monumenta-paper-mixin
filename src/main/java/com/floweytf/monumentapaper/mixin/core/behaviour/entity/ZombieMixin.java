@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
  * <p>
- * Ban zombie drowning
+ * Ban zombie drowning.
  */
 @Mixin(Zombie.class)
 public class ZombieMixin {
@@ -21,6 +21,5 @@ public class ZombieMixin {
         )
     )
     private void monumenta$disableConversion(Zombie instance, int ticksUntilWaterConversion) {
-        // no-op
     }
 }

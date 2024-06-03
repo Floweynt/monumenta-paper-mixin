@@ -11,13 +11,13 @@ import org.spongepowered.asm.mixin.Overwrite;
  * @author Flowey
  * @mm-patch 0006-Monumenta-Block-behavior-changes.patch
  * <p>
- * Disable coral death
+ * Disable coral death.
  */
 @Mixin(BaseCoralPlantTypeBlock.class)
 public class BaseCoralPlantTypeBlockMixin {
     /**
      * @author Flowey
-     * @reason Disable coral death
+     * @reason Disable coral death.
      */
     @Overwrite
     protected static boolean scanForWater(BlockState state, BlockGetter world, BlockPos pos) {

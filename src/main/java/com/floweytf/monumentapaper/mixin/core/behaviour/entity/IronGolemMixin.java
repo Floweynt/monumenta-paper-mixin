@@ -1,5 +1,6 @@
 package com.floweytf.monumentapaper.mixin.core.behaviour.entity;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.world.entity.animal.IronGolem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -10,14 +11,10 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
  * @author Flowey
  * @mm-patch 0035-Monumenta-Remove-randomness-from-iron-golem-attacks.patch
  * <p>
- * Iron golem damage should be consistent
+ * Iron golem damage should be consistent.
  */
 @Mixin(IronGolem.class)
 public abstract class IronGolemMixin {
-    @Shadow
-    protected abstract float getAttackDamage();
-
-    // TODO: should we really call getAttachDamage again?
     @ModifyArg(
         method = "doHurtTarget",
         at = @At(
@@ -26,7 +23,7 @@ public abstract class IronGolemMixin {
         ),
         index = 1
     )
-    private float monumenta$modifyAttackDamage(float amount) {
-        return getAttackDamage();
+    private float monumenta$modifyAttackDamage(float amount, @Local(ordinal = 0) float f) {
+        return f;
     }
 }

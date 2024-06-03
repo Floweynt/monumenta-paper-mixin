@@ -28,7 +28,8 @@ public class InventoryMixin {
     public Player player;
 
     @ModifyReturnValue(method = "clearOrCountMatchingItems", at = @At("TAIL"))
-    private int monumenta$clearCraftingSlots(int original, Predicate<ItemStack> shouldRemove, int maxCount, Container craftingInventory) {
+    private int monumenta$clearCraftingSlots(int original, Predicate<ItemStack> shouldRemove, int maxCount,
+                                             Container craftingInventory) {
         CraftingContainer container = null;
 
         if (this.player.containerMenu instanceof InventoryMenu)
@@ -41,7 +42,8 @@ public class InventoryMixin {
                 ItemStack item = container.getItem(slotNum);
 
                 if (!item.isEmpty() && shouldRemove.test(item)) {
-                    int countFromStack = maxCount <= 0 ? item.getCount() : Math.min(maxCount - original, item.getCount());
+                    int countFromStack = maxCount <= 0 ? item.getCount() : Math.min(maxCount - original,
+                        item.getCount());
 
                     original += countFromStack;
                     if (maxCount != 0) {

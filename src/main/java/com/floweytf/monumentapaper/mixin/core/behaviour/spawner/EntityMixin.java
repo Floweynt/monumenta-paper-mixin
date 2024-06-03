@@ -1,6 +1,6 @@
 package com.floweytf.monumentapaper.mixin.core.behaviour.spawner;
 
-import com.floweytf.monumentapaper.accessor.EntityAccessor;
+import com.floweytf.monumentapaper.duck.EntityAccess;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BaseSpawner;
 import org.spongepowered.asm.mixin.Mixin;
@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.Unique;
  * @author Flowey
  * @mm-patch 0025-Monumenta-Mobs-that-despawn-return-to-their-spawners.patch
  * <p>
- * Mobs that despawn return to their spawners
+ * Mobs that despawn return to their spawners.
  */
 @Mixin(Entity.class)
-public abstract class EntityMixin implements EntityAccessor {
+public abstract class EntityMixin implements EntityAccess {
 
     @Unique
     public BaseSpawner monumenta$spawnerSpawnedBy = null;

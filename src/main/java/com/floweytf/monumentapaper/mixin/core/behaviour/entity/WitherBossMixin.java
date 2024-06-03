@@ -15,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.At;
  * @author Flowey
  * @mm-patch 0033-Monumenta-Mob-behavior-changes.patch
  * <p>
- * Withers can be hurt by arrows even below half health
- * Disable nether stars
+ * Withers can be hurt by arrows even below half health.
+ * Disable nether stars.
  */
 @Mixin(WitherBoss.class)
 public abstract class WitherBossMixin extends Monster {
@@ -38,7 +38,7 @@ public abstract class WitherBossMixin extends Monster {
 
     /**
      * @author Flowey
-     * @reason Disable nether stars
+     * @reason Disable nether stars.
      */
     @Overwrite
     protected void dropCustomDeathLoot(@NotNull DamageSource source, int lootingMultiplier, boolean allowDrops) {
