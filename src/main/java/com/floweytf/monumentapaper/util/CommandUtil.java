@@ -1,15 +1,20 @@
 package com.floweytf.monumentapaper.util;
 
 import com.mojang.brigadier.Command;
+import com.mojang.brigadier.Message;
 import com.mojang.brigadier.RedirectModifier;
 import com.mojang.brigadier.SingleRedirectModifier;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.tree.CommandNode;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.network.chat.Component;
 
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class CommandUtil {
@@ -114,5 +119,13 @@ public class CommandUtil {
         String key, Command<CommandSourceStack> execute, ArgumentBuilder<CommandSourceStack, ?>... callbacks
     ) {
         return lit(key, execute, callbacks);
+    }
+
+    public static DynamicCommandExceptionType exceptionType(Function<Object, Message> function) {
+        return new DynamicCommandExceptionType(function);
+    }
+
+    public static SimpleCommandExceptionType exceptionType(String message) {
+        return new SimpleCommandExceptionType(Component.literal(message));
     }
 }

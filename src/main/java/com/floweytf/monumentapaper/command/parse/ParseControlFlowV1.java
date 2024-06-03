@@ -162,7 +162,7 @@ public class ParseControlFlowV1 implements ISubParser {
     private void handleV1Loop(StringReader reader, int lineNo) {
         final var res = state.parseCommand(
             CONTROL_FLOW_V1, reader,
-            msg -> state.reportErr(lineNo, Diagnostic.ERR_CF_V1_RUN, msg)
+            msg -> state.reportErr(lineNo, Diagnostic.ERR_CF_V1_LOOP, msg)
         );
 
         if (res.isEmpty()) {

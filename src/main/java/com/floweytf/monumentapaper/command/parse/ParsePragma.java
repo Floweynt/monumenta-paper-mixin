@@ -1,14 +1,12 @@
 package com.floweytf.monumentapaper.command.parse;
 
+import com.floweytf.monumentapaper.util.ComponentUtils;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import net.minecraft.network.chat.Component;
 
-import static com.floweytf.monumentapaper.util.CommandUtil.arg;
-import static com.floweytf.monumentapaper.util.CommandUtil.lit;
+import static com.floweytf.monumentapaper.util.CommandUtil.*;
 
 public class ParsePragma implements ISubParser {
     /**
@@ -18,25 +16,34 @@ public class ParsePragma implements ISubParser {
     private static final CommandDispatcher<ParserState> DISPATCH = new CommandDispatcher<>();
 
     static {
-        final var PRAGMA_BAD_FLAG =
-            new DynamicCommandExceptionType(s -> Component.literal(String.format("Illegal pragma feature flag %s", s)));
+        final var PRAGMA_BAD_FEAT = exceptionType(s -> ComponentUtils.fLiteral(Diagnostic.ERR_PRAGMA_BAD_FEAT, s));
+
+        final var PRAGMA_SCOPE_NOT_EMPTY = exceptionType(Diagnostic.ERR_PRAGMA_SCOPE_NOT_EMPTY);
 
         DISPATCH.register(
             lit("pragma",
                 lit("enable",
                     arg("flag", StringArgumentType.word(), (context) -> {
+                        if (context.getSource().hasScope()) {
+                            throw PRAGMA_SCOPE_NOT_EMPTY.create();
+                        }
+
                         final var value = StringArgumentType.getString(context, "flag");
                         if (context.getSource().features().enable(StringArgumentType.getString(context, "flag"))) {
-                            throw PRAGMA_BAD_FLAG.create(value);
+                            throw PRAGMA_BAD_FEAT.create(value);
                         }
                         return 0;
                     })
                 ),
                 lit("disable",
                     arg("flag", StringArgumentType.word(), (context) -> {
+                        if (context.getSource().hasScope()) {
+                            throw PRAGMA_SCOPE_NOT_EMPTY.create();
+                        }
+
                         final var value = StringArgumentType.getString(context, "flag");
                         if (context.getSource().features().disable(StringArgumentType.getString(context, "flag"))) {
-                            throw PRAGMA_BAD_FLAG.create(value);
+                            throw PRAGMA_BAD_FEAT.create(value);
                         }
                         return 0;
                     })
