@@ -1,14 +1,6 @@
 package com.floweytf.monumentapaper.mixin.core.commands;
 
-import com.floweytf.monumentapaper.command.parse.FunctionParser;
-import com.google.common.collect.ImmutableMap;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.functions.CommandFunction;
 import net.minecraft.resources.FileToIdConverter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.ServerFunctionLibrary;
@@ -23,9 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -69,64 +59,5 @@ public class ServerFunctionLibraryMixin {
     )
     private void monumenta$onReload(Pair<?, ?> intermediate, CallbackInfo ci) {
         monumenta$isInitialFunctionLoad = false;
-    }
-
-    @SuppressWarnings("unchecked")
-    @Redirect(
-        method = "lambda$reload$2",
-        at = @At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/commands/functions/CommandFunction;fromLines" +
-                "(Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/brigadier/CommandDispatcher;" +
-                "Lnet/minecraft/commands/ExecutionCommandSource;Ljava/util/List;)" +
-                "Lnet/minecraft/commands/functions/CommandFunction;"
-        )
-    )
-    private <T extends ExecutionCommandSource<T>> CommandFunction<T> monumenta$redirectFunctionParsing(
-        ResourceLocation id, CommandDispatcher<T> dispatcher, T source,
-        List<String> lines
-    ) {
-        final var parser = new FunctionParser(
-            (CommandDispatcher<CommandSourceStack>) dispatcher,
-            (CommandSourceStack) source
-        );
-
-        return (CommandFunction<T>) parser.parse(id, lines).orElse(null);
-    }
-
-    @Inject(
-        method = "lambda$reload$5",
-        at = @At(
-            value = "INVOKE",
-            target = "Lcom/google/common/collect/ImmutableMap$Builder;put(Ljava/lang/Object;Ljava/lang/Object;)" +
-                "Lcom/google/common/collect/ImmutableMap$Builder;"
-        )
-    )
-    private static void monumenta$redirectFunctionParsing(ResourceLocation resourceLocation,
-                                                          ImmutableMap.Builder<?, ?> builder,
-                                                          CommandFunction<?> function, Throwable ex,
-                                                          CallbackInfoReturnable<Object> cir) {
-        if (function == null) {
-            LOGGER.error("Failed to parsing function '" + resourceLocation + "'! See logs for details.");
-        }
-    }
-
-
-    @WrapOperation(
-        method = "lambda$reload$5",
-        at = @At(
-            value = "INVOKE",
-            target = "Lcom/google/common/collect/ImmutableMap$Builder;put(Ljava/lang/Object;Ljava/lang/Object;)" +
-                "Lcom/google/common/collect/ImmutableMap$Builder;"
-        )
-    )
-    private static ImmutableMap.Builder<?, ?> monumenta$redirectFunctionParsing(ImmutableMap.Builder<?, ?> instance,
-                                                                                Object key, Object value,
-                                                                                Operation<ImmutableMap.Builder<?, ?>> original) {
-        if (value != null) {
-            original.call(instance, key, value);
-        }
-
-        return instance;
     }
 }

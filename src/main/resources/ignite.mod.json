@@ -3,8 +3,5 @@
     "version": "1.0.0",
     "mixins": [
         "monumenta.mixins.json"
-    ],
-    "wideners": [
-        "monumenta.accesswidener"
     ]
 }
