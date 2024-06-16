@@ -41,6 +41,7 @@
         "behaviour.spawner.ServerPlayerMixin",
         "behaviour.spawner.SpawnerBlockEntityMixin",
         "bugfix.CraftLootTableMixin",
+        "bugfix.LevelStorageSourceMixin",
         "commands.EntitySelectorOptionsMixin",
         "commands.EntitySelectorParserMixin",
         "commands.ReloadableServerResourcesMixin",
