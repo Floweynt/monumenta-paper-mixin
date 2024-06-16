@@ -2,6 +2,7 @@ plugins {
     `java-library`
     id("com.floweytf.paperweight-aw.userdev") version "1.1"
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("org.ajoberstar.grgit") version "5.2.2"
 }
 
 repositories {
@@ -46,6 +47,11 @@ java {
 tasks {
     jar {
         archiveClassifier.set("dev")
+
+        manifest {
+            attributes["Git-Branch"] = grgit.branch.current().name
+            attributes["Git-Hash"] = grgit.log().first().id
+        }
     }
 
     shadowJar {
