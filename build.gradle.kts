@@ -31,6 +31,8 @@ dependencies {
 
     compileOnly(libs.bundles.mixin)
 
+    implementation(project(":api"))
+    shadowImplementation(project(":api"))
     // Tiny remapper
     remapper(libs.tinyremapper) {
         artifact {

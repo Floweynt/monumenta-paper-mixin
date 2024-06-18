@@ -1,15 +1,30 @@
 package com.floweytf.monumentapaper.api;
 
-import com.floweytf.monumentapaper.Monumenta;
 import org.bukkit.event.entity.EntityDamageEvent;
+
+import java.lang.reflect.Method;
 
 @SuppressWarnings("deprecation")
 public class MonumentaPaperAPI {
+    private static final Class<?> MONUMENTA_CLASS;
+    private static final Method GET_IDENTIFIER_METHOD;
+
+    static {
+        try {
+            MONUMENTA_CLASS = Class.forName("com.floweytf.monumentapaper.Monumenta");
+            VERSION = (String) MONUMENTA_CLASS.getField("VER_VERSION").get(null);
+            GET_IDENTIFIER_METHOD = MONUMENTA_CLASS.getMethod("getIdentifier");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * Don't worry about how this enumerator has an instance without patching API jar...
      */
     public static final EntityDamageEvent.DamageModifier IFRAMES = EntityDamageEvent.DamageModifier.valueOf("IFRAMES");
-    public static final String VERSION = Monumenta.VER_VERSION;
+    public static final String VERSION;
+
     private static int flyingTickTime = 120;
     private static int serverShutdownTime = 20000;
 
@@ -31,6 +46,10 @@ public class MonumentaPaperAPI {
     }
 
     public static String getIdentifier() {
-        return Monumenta.getIdentifier();
+        try {
+            return (String) GET_IDENTIFIER_METHOD.invoke(null);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -1,11 +1,13 @@
 metadata.format.version = "1.1"
 
 [versions]
+paper = "userdev-1.20.4-R0.1-SNAPSHOT"
+paperapi = "1.20.4-R0.1-SNAPSHOT"
+
 jetbrains-annotations = "24.1.0"
 ignite = "1.0.3-SNAPSHOT"
 mixin = "0.8.5"
 mixin-extras = "0.3.5"
-paper = "userdev-1.20.4-R0.1-SNAPSHOT"
 tinyremapper = "0.10.3"
 maven-resolver = "1.9.19"
 disruptor = "3.4.2"
@@ -19,6 +21,7 @@ ignite-launcher = { module = "space.vectrix.ignite:ignite-launcher", version.ref
 mixin-core = { module = "org.spongepowered:mixin", version.ref = "mixin" }
 mixin-extras = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixin-extras" }
 paper = { module = "io.papermc.paper:paper-server", version.ref = "paper"}
+paperapi = { module = "io.papermc.paper:paper-api", version.ref = "paperapi" }
 tinyremapper = { module = "net.fabricmc:tiny-remapper", version.ref = "tinyremapper" }
 
 maven-resolver-connector-basic = { module = "org.apache.maven.resolver:maven-resolver-connector-basic", version.ref = "maven-resolver" }
